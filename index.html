@@ -19,51 +19,43 @@
   .page { display: none; }
   .page.active { display: block; }
 
-  /* Header */
   .header { text-align: center; padding: 24px 16px; }
   .header .icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 14px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 26px; }
   .header h1 { font-size: 19px; font-weight: 700; }
   .header p { font-size: 12px; color: var(--sub); margin-top: 4px; }
 
-  /* Top bar */
-  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding: 0 4px; }
-  .topbar .balance { font-size: 13px; color: var(--sub); }
-  .topbar .balance b { color: var(--gold); }
-  .topbar a { color: var(--accent); font-size: 13px; text-decoration: none; }
-
-  /* Stats */
   .stats { display: flex; gap: 8px; margin-bottom: 16px; }
   .stat { flex: 1; background: var(--card); border-radius: 10px; padding: 12px 8px; text-align: center; }
   .stat .num { font-size: 20px; font-weight: 700; color: var(--accent); }
   .stat .label { font-size: 10px; color: var(--sub); margin-top: 2px; }
 
-  /* Search */
   .search { background: var(--card); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .search input { flex: 1; background: none; border: none; outline: none; color: var(--text); font-size: 14px; }
   .search input::placeholder { color: var(--sub); }
 
-  /* Cats */
   .cats { display: flex; gap: 6px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 2px; }
-  .cat { padding: 6px 14px; border-radius: 18px; font-size: 12px; white-space: nowrap; background: var(--card); color: var(--sub); cursor: pointer; border: none; transition: .2s; }
+  .cat { padding: 6px 14px; border-radius: 18px; font-size: 12px; white-space: nowrap; background: var(--card); color: var(--sub); cursor: pointer; border: none; transition: .2s; font-family: inherit; }
   .cat.active { background: var(--accent); color: #fff; }
 
-  /* Course grid */
-  .section-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
-  .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-bottom: 30px; }
+  .course-grid { display: flex; flex-direction: column; gap: 10px; padding-bottom: 80px; }
   .course-card {
     background: var(--card); border-radius: 12px; padding: 14px; cursor: pointer;
-    transition: .15s; text-decoration: none; color: inherit; display: block;
-    text-align: center; position: relative;
+    transition: .15s; text-decoration: none; color: inherit; display: flex;
+    align-items: flex-start; gap: 12px; position: relative;
   }
-  .course-card:active { transform: scale(0.96); background: #252545; }
-  .course-card .logo { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 8px; }
-  .course-card .name { font-size: 13px; font-weight: 600; }
-  .course-card .desc { font-size: 11px; color: var(--sub); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .course-card .price { font-size: 20px; font-weight: 800; color: var(--gold); margin-top: 6px; }
+  .course-card:active { transform: scale(0.98); background: #252545; }
+  .course-card .logo { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .course-card .info { flex: 1; min-width: 0; }
+  .course-card .name { font-size: 14px; font-weight: 600; }
+  .course-card .desc { font-size: 11px; color: var(--sub); margin-top: 3px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .course-card .right { text-align: right; flex-shrink: 0; }
+  .course-card .price { font-size: 19px; font-weight: 800; color: var(--gold); white-space: nowrap; }
   .course-card .price .u { font-size: 11px; font-weight: 400; }
-  .course-card .tag { position: absolute; top: 8px; right: 8px; font-size: 10px; padding: 2px 6px; border-radius: 5px; background: rgba(255,101,132,.2); color: var(--accent2); }
+  .course-card .tag { font-size: 10px; padding: 2px 6px; border-radius: 5px; background: rgba(255,101,132,.2); color: var(--accent2); display: inline-block; margin-top: 3px; }
+  .course-card .tag.hot { background: rgba(245,158,11,.2); color: #f59e0b; }
   .course-card .tag.fast { background: rgba(74,222,128,.15); color: var(--green); }
-  .course-card .tag.new { background: rgba(106,200,255,.15); color: #6ac8ff; }
+  .course-card .orders { font-size: 10px; color: var(--sub); margin-top: 2px; }
+  .arrow-right { color: var(--sub); font-size: 16px; align-self: center; flex-shrink: 0; }
 
   .hidden { display: none !important; }
 
@@ -81,22 +73,21 @@
     background: none; border: none; font-family: inherit;
   }
   .bottom-nav .nav-item .nav-icon { font-size: 20px; }
-  .bottom-nav .nav-item.active { color: var(--accent); }
 
-  /* ─── ORDER PAGE ─── */
+  /* ORDER PAGE */
   .back { color: var(--accent); font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; margin-bottom: 12px; }
   .order-card { background: var(--card); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
   .order-card h3 { font-size: 16px; margin-bottom: 4px; }
   .order-card .price-big { font-size: 28px; font-weight: 800; color: var(--gold); }
-  .order-card .price-big .u { font-size: 14px; font-weight: 400; }
 
   .form-group { margin-bottom: 14px; }
   .form-group label { display: block; font-size: 13px; color: var(--sub); margin-bottom: 6px; }
-  .form-group input, .form-group textarea {
+  .form-group input, .form-group textarea, .form-group select {
     width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #2a2a40;
     background: var(--card); color: var(--text); font-size: 14px; outline: none;
     font-family: inherit; resize: vertical;
   }
+  .form-group select { appearance: none; cursor: pointer; }
   .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
 
   .qr-section { text-align: center; margin: 16px 0; }
@@ -115,35 +106,23 @@
   .btn-outline { background: none; border: 1px solid var(--accent); color: var(--accent); }
   .btn-sm { padding: 8px 16px; font-size: 13px; width: auto; }
 
-  /* ─── RECHARGE ─── */
-  .amount-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-  .amount-btn {
-    padding: 14px; border-radius: 10px; border: 1px dashed #444; background: var(--card);
-    color: var(--text); font-size: 14px; cursor: pointer; text-align: center; transition: .2s;
-    font-family: inherit;
-  }
-  .amount-btn.active { border-color: var(--accent); background: #1e1e40; }
-
-  /* ─── ADMIN ─── */
+  /* ADMIN */
   .order-item { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 8px; font-size: 13px; }
   .order-item .meta { color: var(--sub); font-size: 11px; margin-top: 4px; }
-  .order-item .status { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; margin-left: 6px; }
+  .status { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; margin-left: 6px; }
   .status.pending { background: rgba(245,158,11,.2); color: #f59e0b; }
   .status.done { background: rgba(74,222,128,.2); color: var(--green); }
-
   .inline-row { display: flex; gap: 8px; align-items: center; }
   .inline-row input { flex: 1; }
 
-  /* Toast */
   .toast {
     position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
     background: #333; color: #fff; padding: 10px 24px; border-radius: 20px;
     font-size: 13px; z-index: 999; opacity: 0; pointer-events: none; transition: opacity .3s;
   }
   .toast.show { opacity: 1; }
-
-  /* Footer */
-  .footer { text-align: center; padding: 20px; color: var(--sub); font-size: 11px; }
+  .footer { text-align: center; padding: 20px 20px 90px; color: var(--sub); font-size: 11px; }
+  .notice { background: rgba(255,184,0,.08); border-left: 3px solid var(--gold); border-radius: 8px; padding: 10px 12px; margin: 12px 0; font-size: 12px; color: var(--gold); }
 </style>
 </head>
 <body>
@@ -155,49 +134,35 @@
     <div class="header">
       <div class="icon">📚</div>
       <h1>网课代刷平台</h1>
-      <p>选择课程 → 提交账号 → 支付 → 全包通过</p>
-    </div>
-    <div class="topbar">
-      <span class="balance">💰 余额：<b id="homeBalance">¥0.00</b></span>
-      <span>
-        <a href="#" onclick="showPage('recharge')" style="background:var(--gold);color:#000;padding:6px 14px;border-radius:14px;font-size:12px;font-weight:600;">充值</a>
-      </span>
+      <p>选择课程 → 填写账号密码 → 支付 → 全包通过</p>
     </div>
     <div class="stats">
-      <div class="stat"><div class="num" id="statUsers">1280+</div><div class="label">已服务学员</div></div>
+      <div class="stat"><div class="num">100+</div><div class="label">刷课脚本</div></div>
       <div class="stat"><div class="num">99.7%</div><div class="label">通过率</div></div>
-      <div class="stat"><div class="num" id="statCourses">12</div><div class="label">平台覆盖</div></div>
+      <div class="stat"><div class="num">10万+</div><div class="label">已刷订单</div></div>
     </div>
     <div class="search">
       <span>🔍</span>
-      <input type="text" id="searchInput" placeholder="搜索课程平台..." oninput="renderCourses()">
+      <input type="text" id="searchInput" placeholder="搜索课程平台或脚本名称..." oninput="renderCourses()">
     </div>
     <div class="cats" id="catBar">
       <button class="cat active" onclick="filterCat('all', this)">全部</button>
-      <button class="cat" onclick="filterCat('mooc', this)">MOOC平台</button>
-      <button class="cat" onclick="filterCat('exam', this)">考试类</button>
+      <button class="cat" onclick="filterCat('xxxt', this)">学习通/超星</button>
+      <button class="cat" onclick="filterCat('zhs', this)">智慧树/知到</button>
+      <button class="cat" onclick="filterCat('uxy', this)">U校园</button>
+      <button class="cat" onclick="filterCat('imooc', this)">MOOC/国开</button>
       <button class="cat" onclick="filterCat('english', this)">英语类</button>
-      <button class="cat" onclick="filterCat('other', this)">其他</button>
+      <button class="cat" onclick="filterCat('other', this)">其他平台</button>
     </div>
-    <div class="section-title">全部课程 <span style="color:var(--sub);font-size:12px;" id="countBadge"></span></div>
     <div class="course-grid" id="courseGrid"></div>
     <div class="footer">
-      代理刷课 · 安全可靠 · 不过退款<br>
+      所有代刷脚本均来自稳定渠道 · 安全可靠 · 不过退款<br>
       <a href="#" onclick="showPage('admin-login')" style="color:#333;font-size:10px;">管理入口</a>
     </div>
     <div class="bottom-nav">
-      <button class="nav-item active" onclick="showPage('home')">
-        <span class="nav-icon">🏠</span>首页
-      </button>
-      <button class="nav-item" onclick="showPage('orders')">
-        <span class="nav-icon">📋</span>我的订单
-      </button>
-      <button class="nav-item" onclick="showPage('recharge')">
-        <span class="nav-icon">💳</span>充值
-      </button>
-      <button class="nav-item" onclick="showPage('withdraw')">
-        <span class="nav-icon">💸</span>提现
-      </button>
+      <button class="nav-item active" onclick="showPage('home')"><span class="nav-icon">🏠</span>首页</button>
+      <button class="nav-item" onclick="showPage('orders')"><span class="nav-icon">📋</span>我的订单</button>
+      <button class="nav-item" onclick="showPage('admin-login')"><span class="nav-icon">⚙️</span>管理</button>
     </div>
   </div>
 
@@ -206,90 +171,46 @@
     <a class="back" href="#" onclick="showPage('home')">← 返回</a>
     <div class="order-card" id="orderCourseInfo"></div>
     <div class="form-group">
-      <label>平台账号（手机号/学号/邮箱）</label>
-      <input type="text" id="orderAccount" placeholder="请输入你在该平台的登录账号">
+      <label>学校/机构名称（必填）</label>
+      <input type="text" id="orderSchool" placeholder="如：XX大学">
     </div>
     <div class="form-group">
-      <label>平台密码</label>
-      <input type="password" id="orderPassword" placeholder="请输入你在该平台的登录密码">
+      <label>平台账号（必填）</label>
+      <input type="text" id="orderAccount" placeholder="手机号/学号/邮箱">
+    </div>
+    <div class="form-group">
+      <label>平台密码（必填）</label>
+      <input type="password" id="orderPassword" placeholder="登录密码">
     </div>
     <div class="form-group">
       <label>备注（选填）</label>
-      <textarea id="orderNote" rows="2" placeholder="如：只需要刷章节视频，不需要考试..."></textarea>
+      <textarea id="orderNote" rows="2" placeholder="如：只刷视频不考试、需要慢刷..."></textarea>
     </div>
     <div class="qr-section">
-      <p style="color:var(--red);margin-bottom:8px;">请扫码支付后，上传截图</p>
+      <p style="color:var(--red);margin-bottom:8px;">微信扫码支付（金额见下方）</p>
       <img id="paymentQR" src="" alt="收款二维码" onerror="this.style.display='none'">
-      <p>支付金额：<b id="orderPrice" style="color:var(--gold);"></b></p>
-      <p style="font-size:11px;color:var(--sub);">如果没有二维码，请直接转账后截图</p>
+      <p>支付金额：<b id="orderPrice" style="color:var(--gold);font-size:18px;"></b></p>
     </div>
     <div class="form-group">
-      <label>支付截图上传</label>
+      <label>支付截图（选填，审核更快）</label>
       <input type="file" id="orderScreenshot" accept="image/*" style="padding:10px;">
-      <div id="screenshotPreview" style="margin-top:8px;"></div>
     </div>
-    <button class="btn btn-gold" onclick="submitOrder()">确认提交</button>
-    <p style="text-align:center;margin-top:10px;font-size:11px;color:var(--sub);">
-      提交后客服将在 5-30 分钟内处理
-    </p>
+    <div class="notice">
+      提交后24小时内开始处理，请保持账号密码正确。<br>刷课期间请勿登录，否则可能导致进度清零。
+    </div>
+    <button class="btn btn-gold" onclick="submitOrder()">确认支付并提交</button>
   </div>
 
-  <!-- ==================== RECHARGE PAGE ==================== -->
-  <div class="page" id="page-recharge">
-    <a class="back" href="#" onclick="showPage('home')">← 返回</a>
-    <div class="order-card">
-      <h3>账户充值</h3>
-      <p style="color:var(--sub);font-size:13px;margin:6px 0;">当前余额：<b id="rechargeBalance" style="color:var(--gold);"></b></p>
-    </div>
-    <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">选择充值金额</p>
-    <div class="amount-grid" id="amountGrid">
-      <button class="amount-btn active" onclick="selectAmount(10, this)">¥10</button>
-      <button class="amount-btn" onclick="selectAmount(20, this)">¥20</button>
-      <button class="amount-btn" onclick="selectAmount(50, this)">¥50</button>
-      <button class="amount-btn" onclick="selectAmount(100, this)">¥100</button>
-      <button class="amount-btn" onclick="selectAmount(200, this)">¥200</button>
-      <button class="amount-btn" onclick="selectAmount(500, this)">¥500</button>
-    </div>
-    <div class="qr-section">
-      <img id="rechargeQR" src="" alt="收款二维码" onerror="this.style.display='none'">
-      <p>充值金额：<b id="rechargeAmount" style="color:var(--gold);">¥10</b></p>
-    </div>
-    <div class="form-group">
-      <label>支付截图上传</label>
-      <input type="file" id="rechargeScreenshot" accept="image/*" style="padding:10px;">
-    </div>
-    <button class="btn btn-gold" onclick="submitRecharge()">提交充值申请</button>
-    <p style="text-align:center;margin-top:10px;font-size:11px;color:var(--sub);">
-      充值审核通过后余额自动到账
-    </p>
-  </div>
-
-  <!-- ==================== MY ORDERS PAGE ==================== -->
+  <!-- ==================== MY ORDERS ==================== -->
   <div class="page" id="page-orders">
     <a class="back" href="#" onclick="showPage('home')">← 返回</a>
     <div class="order-card"><h3>我的订单</h3></div>
     <div id="myOrdersList"></div>
-  </div>
-
-  <!-- ==================== WITHDRAW PAGE ==================== -->
-  <div class="page" id="page-withdraw">
-    <a class="back" href="#" onclick="showPage('home')">← 返回</a>
-    <div class="order-card">
-      <h3>余额提现</h3>
-      <p style="color:var(--sub);font-size:13px;margin:6px 0;">可提现余额：<b id="withdrawBalance" style="color:var(--gold);"></b></p>
+    <div class="bottom-nav">
+      <button class="nav-item" onclick="showPage('home')"><span class="nav-icon">🏠</span>首页</button>
+      <button class="nav-item active" onclick="showPage('orders')"><span class="nav-icon">📋</span>我的订单</button>
+      <button class="nav-item" onclick="showPage('admin-login')"><span class="nav-icon">⚙️</span>管理</button>
     </div>
-    <div class="form-group">
-      <label>提现金额</label>
-      <input type="number" id="withdrawAmount" placeholder="请输入提现金额">
-    </div>
-    <div class="form-group">
-      <label>收款方式（微信/支付宝）</label>
-      <input type="text" id="withdrawMethod" placeholder="如：微信 138xxxx1234">
-    </div>
-    <button class="btn btn-primary" onclick="submitWithdraw()">申请提现</button>
-    <p style="text-align:center;margin-top:10px;font-size:11px;color:var(--sub);">
-      提现审核通过后 1-3 个工作日到账
-    </p>
   </div>
 
   <!-- ==================== ADMIN LOGIN ==================== -->
@@ -310,8 +231,6 @@
     <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
       <button class="btn btn-sm btn-primary" onclick="adminTab='orders';renderAdmin();">订单管理</button>
       <button class="btn btn-sm btn-outline" onclick="adminTab='prices';renderAdmin();">价格管理</button>
-      <button class="btn btn-sm btn-outline" onclick="adminTab='recharges';renderAdmin();">充值审核</button>
-      <button class="btn btn-sm btn-outline" onclick="adminTab='withdraws';renderAdmin();">提现审核</button>
       <button class="btn btn-sm btn-outline" onclick="adminTab='qrcode';renderAdmin();">收款码设置</button>
     </div>
     <div id="adminContent"></div>
@@ -323,69 +242,53 @@
 
 <script>
 // ═══════════════════════════════════════════
-// DATA — 在这里改课程和价格
+// COURSE DATA — 来自 kx 平台真实课程
 // ═══════════════════════════════════════════
 const DEFAULT_COURSES = [
-  { id:"1", name:"超星尔雅(学习通)", desc:"章节/作业/考试全包", logo:"📖", bg:"#2b5f8a", price:9.9, cat:"mooc", tag:"hot", tagText:"热门" },
-  { id:"2", name:"智慧树(知到)", desc:"全自动刷课+考试+期末", logo:"🌳", bg:"#2d8a4e", price:9.9, cat:"mooc", tag:"hot", tagText:"热门" },
-  { id:"3", name:"中国大学MOOC", desc:"名校课程代刷，含单元测试", logo:"🎓", bg:"#c73e3e", price:12.9, cat:"mooc", tag:"new", tagText:"新品" },
-  { id:"4", name:"U校园(Unipus)", desc:"大学英语听说读写全包", logo:"🏫", bg:"#5c3e9e", price:15.9, cat:"english", tag:"fast", tagText:"秒刷" },
-  { id:"5", name:"iSmart", desc:"英语课程代刷，含听说训练", logo:"💬", bg:"#e85d30", price:13.9, cat:"english", tag:"", tagText:"" },
-  { id:"6", name:"学堂在线", desc:"清华/北大等名校课程代刷", logo:"🏛️", bg:"#7b3e6b", price:11.9, cat:"mooc", tag:"", tagText:"" },
-  { id:"7", name:"优学院", desc:"全自动代刷，含作业与考试", logo:"📱", bg:"#3e7b8a", price:8.9, cat:"mooc", tag:"", tagText:"" },
-  { id:"8", name:"高校邦", desc:"创新创业类课程代刷", logo:"🏢", bg:"#4a6fa5", price:10.9, cat:"mooc", tag:"", tagText:"" },
-  { id:"9", name:"青书学堂", desc:"成教/网教课程代刷", logo:"📘", bg:"#3e9e6b", price:11.9, cat:"other", tag:"", tagText:"" },
-  { id:"10", name:"形势与政策", desc:"专题课程代刷，快速完成", logo:"📰", bg:"#b85c3e", price:6.9, cat:"exam", tag:"fast", tagText:"秒刷" },
-  { id:"11", name:"学习强国", desc:"积分代刷，每日自动打卡", logo:"🇨🇳", bg:"#cc3030", price:19.9, cat:"exam", tag:"hot", tagText:"热门" },
-  { id:"12", name:"FIF口语训练", desc:"英语口语AI训练代刷", logo:"🎙️", bg:"#6b4e9e", price:14.9, cat:"english", tag:"", tagText:"" },
+  { id:"1", name:"超星学习通-全包（推荐）", desc:"章节视频+章测+考试+讨论+AI辅助答题，所有题型全支持，每日1000分钟学习时长，平均1天1门课", logo:"📖", bg:"#2b5f8a", price:12.9, cat:"xxxt", tag:"hot", tagText:"最热", orders:34972 },
+  { id:"2", name:"超星学习通-仅视频测验", desc:"仅刷视频和章测，不考试不做作业，适合只需要进度不需要成绩的课程", logo:"📖", bg:"#2b5f8a", price:9.9, cat:"xxxt", tag:"", tagText:"", orders:61010 },
+  { id:"3", name:"超星学习通-仅考试", desc:"仅考试不刷视频，仅保存不提交，支持所有题型，适合只需补考的同学", logo:"📝", bg:"#2b5f8a", price:6.9, cat:"xxxt", tag:"", tagText:"", orders:62002 },
+  { id:"4", name:"超星学习通-秒刷（不清进度）", desc:"视频+章测秒刷完成，不清进度，支持带锁课程，当日总时长不超过1200分钟", logo:"⚡", bg:"#2b5f8a", price:8.9, cat:"xxxt", tag:"fast", tagText:"极速", orders:3899 },
+  { id:"5", name:"智慧树/知到-慢刷全包（推荐）", desc:"规律学习全包：视频+作业+习惯分+互动+见面课+考试，每天1:1观看30分钟，不弹异常", logo:"🌳", bg:"#2d8a4e", price:12.9, cat:"zhs", tag:"hot", tagText:"推荐", orders:1204 },
+  { id:"6", name:"智慧树/知到-秒刷全包", desc:"秒刷拉满进度，视频课件+作业+互动分+见面课+考试，官方题库包高分，不补习惯分", logo:"⚡", bg:"#2d8a4e", price:10.9, cat:"zhs", tag:"fast", tagText:"秒刷", orders:1205 },
+  { id:"7", name:"智慧树/知到-AI课+翻转课", desc:"仅课件，包进度+掌握度，适合AI课程和翻转课堂类课程", logo:"🤖", bg:"#2d8a4e", price:7.9, cat:"zhs", tag:"", tagText:"", orders:1206 },
+  { id:"8", name:"U校园-单元代刷", desc:"客观题满分，主观题标准答案，3小时时长，没开放单元自动后续上号，支持自定义分数时长", logo:"🏫", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", orders:1194 },
+  { id:"9", name:"U校园-整本代刷（推荐）", desc:"整本全包所有单元，客观题满分，默认满分时长，支持自定义，未达满分可重刷", logo:"🏫", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"hot", tagText:"推荐", orders:1193 },
+  { id:"10", name:"U校园AI版-单元", desc:"AI版专属，时长和分数延迟到账，客观题满分作答，请刷完后耐心等待", logo:"🤖", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", orders:10100 },
+  { id:"11", name:"U校园AI版-整本", desc:"AI版整本全包，时长延迟到账，没开放单元自动上号，支持自定义分数时长", logo:"🤖", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"", tagText:"", orders:10099 },
+  { id:"12", name:"中国大学MOOC-自动更新", desc:"全包除主观题，包讨论，包新旧版考试（仅客观题），每5天自动更新重新上号", logo:"🎓", bg:"#c73e3e", price:14.9, cat:"imooc", tag:"", tagText:"", orders:1183 },
+  { id:"13", name:"国开大学-全包", desc:"视频+形考+大作业+文件题+终考+时长+次数+论坛，自动识别地区IP，规律学习7天", logo:"🏛️", bg:"#7b3e6b", price:19.9, cat:"imooc", tag:"hot", tagText:"热销", orders:3897 },
+  { id:"14", name:"智慧职教MOOC-全包", desc:"课件+作业+测试+考试+讨论+时长全包，AI作答讨论，模拟真人，支持随机考试", logo:"💼", bg:"#3e7b8a", price:12.9, cat:"imooc", tag:"", tagText:"", orders:8533 },
+  { id:"15", name:"iSmart-整本代刷", desc:"默认秒单，时长10分钟/页，客观题满分，支持自定义分数时长慢刷，班级测试需另下单", logo:"💬", bg:"#e85d30", price:18.9, cat:"english", tag:"", tagText:"", orders:1184 },
+  { id:"16", name:"WeLearn-整本代刷", desc:"全部单元+时长，正确率95-100%，先做题后补时长，默认25小时，最高50小时", logo:"📗", bg:"#4a9e3e", price:15.9, cat:"english", tag:"", tagText:"", orders:1186 },
+  { id:"17", name:"清华社英语-整本", desc:"做题+时长全包，正确率98%+，支持闯关模式，录音自动根据性别上传，最高30小时", logo:"📕", bg:"#8b3e4a", price:35.9, cat:"english", tag:"", tagText:"", orders:1190 },
+  { id:"18", name:"青书学堂-全包", desc:"课件+作业+登陆分+讨论+资料+录播+考试，AI作答主观题，支持保存不提交模式", logo:"📘", bg:"#3e9e6b", price:15.9, cat:"other", tag:"", tagText:"", orders:3864 },
+  { id:"19", name:"学起Plus-全包", desc:"时长+次数+作业+考试全包，多门课程同时进行，500分钟默认时长，直播仅看回放", logo:"📱", bg:"#4a6fa5", price:16.9, cat:"other", tag:"", tagText:"", orders:3867 },
+  { id:"20", name:"学起Plus-不考试", desc:"仅时长+次数+作业，不考试，适合不需要期末考试的课程，直播仅看回放", logo:"📱", bg:"#4a6fa5", price:14.9, cat:"other", tag:"", tagText:"", orders:3868 },
+  { id:"21", name:"安全微伴-全包", desc:"视频+考试全包，下单后请勿挤号，稳定高效", logo:"🛡️", bg:"#6b9e4e", price:10.9, cat:"other", tag:"", tagText:"", orders:3876 },
+  { id:"22", name:"柠檬文才学堂-全包", desc:"课件+作业+讨论+资料+考试，考试22:00~08:00官方维护无法进行", logo:"🍋", bg:"#e8b830", price:11.9, cat:"other", tag:"", tagText:"", orders:3888 },
+  { id:"23", name:"高校考试平台-全包", desc:"包视频+测验+考试，1:1跑视频，注意只能1:1运行，不可同时多门", logo:"🏢", bg:"#5a6fa5", price:25.9, cat:"other", tag:"", tagText:"", orders:34260 },
+  { id:"24", name:"学习通考试列表（满分）", desc:"查询账号下全部考试并作答，基本满分，支持专业课，无视APP端人脸识别", logo:"📝", bg:"#2b5f8a", price:8.9, cat:"xxxt", tag:"", tagText:"", orders:1010 },
+  { id:"25", name:"学习通作业列表（满分）", desc:"查询账号下所有作业并显示所属课程，单选/多选/判断包满分，支持重考自动作答", logo:"📋", bg:"#2b5f8a", price:7.9, cat:"xxxt", tag:"", tagText:"", orders:10021 },
+  { id:"26", name:"出头科技-单考试", desc:"包考试，支持superchutou.com域名全部机构，机构未收录可提交管理员收录", logo:"💻", bg:"#6e4a8a", price:6.9, cat:"other", tag:"", tagText:"", orders:5963 },
+  { id:"27", name:"思纽教育-全包（除考试）", desc:"包视频+作业+直播，支持ketangx.net/weirenzheng.cn/edueva.org全部站点", logo:"🎯", bg:"#8a4a5e", price:16.9, cat:"other", tag:"", tagText:"", orders:4119 },
+  { id:"28", name:"思纽教育-单考试", desc:"仅考试，有人脸识别的考试请勿下单（如喀什大学），支持32个站点", logo:"🎯", bg:"#8a4a5e", price:9.9, cat:"other", tag:"", tagText:"", orders:4120 },
 ];
+
+const ADMIN_PWD = "admin888";
+const STORAGE_KEY = "course_helper_v4";
 
 // ═══════════════════════════════════════════
 // STORAGE
 // ═══════════════════════════════════════════
-const ADMIN_PWD = "admin888";
-const STORAGE_KEY = "course_helper_data";
-
 function loadData() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : {};
-  } catch(e) { return {}; }
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e) { return {}; }
 }
-
-function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function getCourses() {
-  const data = loadData();
-  return data.prices || DEFAULT_COURSES;
-}
-
-function getOrders() {
-  const data = loadData();
-  return data.orders || [];
-}
-
-function getRecharges() {
-  const data = loadData();
-  return data.recharges || [];
-}
-
-function getWithdraws() {
-  const data = loadData();
-  return data.withdraws || [];
-}
-
-function getBalance() {
-  const data = loadData();
-  return data.balance || 0;
-}
-
-function getUserQR() {
-  const data = loadData();
-  return data.paymentQR || "";
-}
+function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+function getCourses() { const d = loadData(); return d.prices || DEFAULT_COURSES; }
+function getOrders() { const d = loadData(); return d.orders || []; }
+function getUserQR() { const d = loadData(); return d.paymentQR || ""; }
 
 // ═══════════════════════════════════════════
 // NAVIGATION
@@ -400,36 +303,35 @@ function showPage(name, data) {
   window._pageData = data;
   if (name === "home") renderCourses();
   if (name === "order") renderOrder();
-  if (name === "recharge") renderRecharge();
   if (name === "orders") renderMyOrders();
-  if (name === "withdraw") { document.getElementById("withdrawBalance").textContent = "¥" + getBalance().toFixed(2); }
   if (name === "admin") renderAdmin();
   window.scrollTo(0, 0);
 }
 
 // ═══════════════════════════════════════════
-// HOME PAGE
+// HOME
 // ═══════════════════════════════════════════
 function renderCourses() {
   const courses = getCourses();
-  const keyword = (document.getElementById("searchInput")?.value || "").toLowerCase();
+  const kw = (document.getElementById("searchInput")?.value || "").toLowerCase();
   let list = courses;
   if (activeCat !== "all") list = list.filter(c => c.cat === activeCat);
-  if (keyword) list = list.filter(c => c.name.toLowerCase().includes(keyword) || c.desc.toLowerCase().includes(keyword));
+  if (kw) list = list.filter(c => c.name.toLowerCase().includes(kw) || c.desc.toLowerCase().includes(kw));
 
-  const grid = document.getElementById("courseGrid");
-  grid.innerHTML = list.map(c => `
-    <a class="course-card" href="javascript:void(0)" onclick="showPage('order', ${JSON.stringify(c).replace(/"/g, '&quot;')})">
-      ${c.tag ? `<span class="tag ${c.tag}">${c.tagText}</span>` : ""}
+  document.getElementById("courseGrid").innerHTML = list.map(c => `
+    <a class="course-card" href="javascript:void(0)" onclick="showPage('order', ${JSON.stringify(c).replace(/"/g, '&quot;').replace(/'/g, '&#39;')})">
       <div class="logo" style="background:${c.bg}">${c.logo}</div>
-      <div class="name">${c.name}</div>
-      <div class="desc">${c.desc}</div>
-      <div class="price"><span class="u">¥</span>${c.price.toFixed(1)}</div>
+      <div class="info">
+        <div class="name">${c.name} ${c.tag ? '<span class="tag '+c.tag+'">'+c.tagText+'</span>' : ''}</div>
+        <div class="desc">${c.desc}</div>
+        <div class="orders">已处理 ${(c.orders||0).toLocaleString()} 单</div>
+      </div>
+      <div class="right">
+        <div class="price"><span class="u">¥</span>${c.price.toFixed(1)}</div>
+      </div>
+      <span class="arrow-right">›</span>
     </a>
   `).join("");
-  document.getElementById("statCourses").textContent = courses.length;
-  document.getElementById("countBadge").textContent = "(" + list.length + "个)";
-  document.getElementById("homeBalance").textContent = "¥" + getBalance().toFixed(2);
 }
 
 function filterCat(cat, btn) {
@@ -440,7 +342,7 @@ function filterCat(cat, btn) {
 }
 
 // ═══════════════════════════════════════════
-// ORDER PAGE
+// ORDER
 // ═══════════════════════════════════════════
 function renderOrder() {
   const c = window._pageData;
@@ -448,9 +350,9 @@ function renderOrder() {
   document.getElementById("orderCourseInfo").innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;">
       <div style="width:44px;height:44px;border-radius:10px;background:${c.bg};display:flex;align-items:center;justify-content:center;font-size:20px;">${c.logo}</div>
-      <div><h3>${c.name}</h3><p style="color:var(--sub);font-size:12px;">${c.desc}</p></div>
-      <div style="margin-left:auto;"><span class="price-big"><span class="u">¥</span>${c.price.toFixed(1)}</span></div>
+      <div><h3>${c.name}</h3><p style="color:var(--sub);font-size:12px;">${c.desc.slice(0,60)}...</p></div>
     </div>
+    <div style="text-align:center;margin-top:12px;"><span class="price-big"><span class="u">¥</span>${c.price.toFixed(1)}</span></div>
   `;
   document.getElementById("orderPrice").textContent = "¥" + c.price.toFixed(1);
   const qr = getUserQR();
@@ -461,24 +363,21 @@ function renderOrder() {
 
 function submitOrder() {
   const c = window._pageData;
+  const school = document.getElementById("orderSchool").value.trim();
   const account = document.getElementById("orderAccount").value.trim();
   const password = document.getElementById("orderPassword").value.trim();
   const note = document.getElementById("orderNote").value.trim();
   const screenshotFile = document.getElementById("orderScreenshot").files[0];
 
+  if (!school) { toast("请填写学校/机构名称"); return; }
   if (!account || !password) { toast("请填写账号和密码"); return; }
 
   const data = loadData();
   const orders = data.orders || [];
-
   const order = {
     id: Date.now().toString(36),
-    course: c.name,
-    courseId: c.id,
-    price: c.price,
-    account,
-    password,
-    note,
+    course: c.name, courseId: c.id, price: c.price,
+    school, account, password, note,
     status: "pending",
     createdAt: new Date().toLocaleString(),
   };
@@ -490,60 +389,19 @@ function submitOrder() {
       orders.unshift(order);
       data.orders = orders;
       saveData(data);
-      toast("订单提交成功！客服将尽快处理");
-      setTimeout(() => showPage("home"), 1500);
+      copyToClipboard(`【新订单】${c.name}\n学校:${school}\n账号:${account}\n密码:${password}\n备注:${note}\n金额:¥${c.price.toFixed(1)}`);
+      toast("订单提交成功！信息已复制，可粘贴发送给客服确认");
+      setTimeout(() => showPage("home"), 2000);
     };
     reader.readAsDataURL(screenshotFile);
   } else {
     orders.unshift(order);
     data.orders = orders;
     saveData(data);
-    toast("订单提交成功！（未上传支付截图）");
-    setTimeout(() => showPage("home"), 1500);
+    copyToClipboard(`【新订单】${c.name}\n学校:${school}\n账号:${account}\n密码:${password}\n备注:${note}\n金额:¥${c.price.toFixed(1)}`);
+    toast("订单提交成功！信息已复制到剪贴板");
+    setTimeout(() => showPage("home"), 2000);
   }
-}
-
-// ═══════════════════════════════════════════
-// RECHARGE
-// ═══════════════════════════════════════════
-let rechargeAmount = 10;
-
-function renderRecharge() {
-  document.getElementById("rechargeBalance").textContent = "¥" + getBalance().toFixed(2);
-  document.getElementById("rechargeAmount").textContent = "¥" + rechargeAmount;
-  const qr = getUserQR();
-  const qrImg = document.getElementById("rechargeQR");
-  if (qr) { qrImg.src = qr; qrImg.style.display = ""; }
-  else { qrImg.style.display = "none"; }
-}
-
-function selectAmount(amt, btn) {
-  rechargeAmount = amt;
-  document.querySelectorAll("#amountGrid .amount-btn").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  document.getElementById("rechargeAmount").textContent = "¥" + amt;
-}
-
-function submitRecharge() {
-  const screenshotFile = document.getElementById("rechargeScreenshot").files[0];
-  if (!screenshotFile) { toast("请上传支付截图"); return; }
-  const data = loadData();
-  const recharges = data.recharges || [];
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    recharges.unshift({
-      id: Date.now().toString(36),
-      amount: rechargeAmount,
-      screenshot: e.target.result,
-      status: "pending",
-      createdAt: new Date().toLocaleString(),
-    });
-    data.recharges = recharges;
-    saveData(data);
-    toast("充值申请已提交，审核通过后到账");
-    setTimeout(() => showPage("home"), 1500);
-  };
-  reader.readAsDataURL(screenshotFile);
 }
 
 // ═══════════════════════════════════════════
@@ -556,38 +414,13 @@ function renderMyOrders() {
     div.innerHTML = '<p style="color:var(--sub);text-align:center;padding:30px;">暂无订单</p>';
     return;
   }
-  div.innerHTML = orders.slice(0, 20).map(o => `
+  div.innerHTML = orders.slice(0, 30).map(o => `
     <div class="order-item">
       <div><b>${o.course}</b> <span class="status ${o.status}">${o.status==="pending"?"处理中":"已完成"}</span></div>
+      <div style="margin-top:2px;font-size:12px;">${o.school} | 账号:${o.account}</div>
       <div class="meta">¥${o.price.toFixed(1)} · ${o.createdAt}</div>
     </div>
   `).join("");
-}
-
-// ═══════════════════════════════════════════
-// WITHDRAW
-// ═══════════════════════════════════════════
-function submitWithdraw() {
-  const amount = parseFloat(document.getElementById("withdrawAmount").value);
-  const method = document.getElementById("withdrawMethod").value.trim();
-  const balance = getBalance();
-  if (!amount || amount <= 0) { toast("请输入有效金额"); return; }
-  if (amount > balance) { toast("余额不足"); return; }
-  if (!method) { toast("请填写收款方式"); return; }
-  const data = loadData();
-  data.balance = balance - amount;
-  const withdraws = data.withdraws || [];
-  withdraws.unshift({
-    id: Date.now().toString(36),
-    amount,
-    method,
-    status: "pending",
-    createdAt: new Date().toLocaleString(),
-  });
-  data.withdraws = withdraws;
-  saveData(data);
-  toast("提现申请已提交");
-  setTimeout(() => showPage("home"), 1500);
 }
 
 // ═══════════════════════════════════════════
@@ -595,12 +428,8 @@ function submitWithdraw() {
 // ═══════════════════════════════════════════
 function adminLogin() {
   const pwd = document.getElementById("adminPassword").value;
-  if (pwd === ADMIN_PWD) {
-    showPage("admin");
-    toast("登录成功");
-  } else {
-    toast("密码错误");
-  }
+  if (pwd === ADMIN_PWD) { showPage("admin"); toast("登录成功"); }
+  else { toast("密码错误"); }
 }
 
 function renderAdmin() {
@@ -615,10 +444,10 @@ function renderAdmin() {
       div.innerHTML = orders.map(o => `
         <div class="order-item">
           <div><b>${o.course}</b> - ¥${o.price.toFixed(1)} <span class="status ${o.status}">${o.status==="pending"?"处理中":"已完成"}</span></div>
-          <div style="margin-top:4px;">账号：${o.account}｜密码：${o.password}${o.note ? '｜备注：'+o.note : ''}</div>
+          <div style="margin-top:4px;">学校：${o.school}｜账号：${o.account}｜密码：${o.password}${o.note ? '｜备注：'+o.note : ''}</div>
           <div class="meta">${o.createdAt}</div>
           ${o.screenshot ? `<img src="${o.screenshot}" style="max-width:120px;margin-top:4px;border-radius:6px;">` : ""}
-          ${o.status === "pending" ? `<button class="btn btn-sm btn-green" style="margin-top:4px;" onclick="markOrderDone('${o.id}')">标记完成</button>` : ""}
+          ${o.status === "pending" ? `<button class="btn btn-sm btn-green" style="margin-top:4px;" onclick="markDone('${o.id}')">标记完成</button>` : ""}
         </div>
       `).join("");
     }
@@ -629,107 +458,48 @@ function renderAdmin() {
     div.innerHTML = courses.map((c, i) => `
       <div class="order-item">
         <div style="display:flex;align-items:center;justify-content:space-between;">
-          <span><b>${c.logo} ${c.name}</b></span>
+          <span style="font-size:12px;"><b>${c.logo} ${c.name}</b></span>
           <div class="inline-row">
             <span style="font-size:12px;color:var(--sub);">¥</span>
-            <input type="number" id="price_${i}" value="${c.price}" style="width:80px;padding:6px;border-radius:6px;border:1px solid #444;background:var(--card);color:var(--text);text-align:center;" step="0.1">
+            <input type="number" id="price_${i}" value="${c.price}" style="width:70px;padding:6px;border-radius:6px;border:1px solid #444;background:var(--card);color:var(--text);text-align:center;" step="0.1">
             <button class="btn btn-sm btn-green" onclick="updatePrice(${i})">保存</button>
           </div>
         </div>
       </div>
-    `).join("") + '<p style="color:var(--sub);font-size:11px;margin-top:8px;">价格修改后即时生效（仅当前浏览器）。如需永久生效，修改 index.html 中的 DEFAULT_COURSES。</p>';
-  }
-
-  if (adminTab === "recharges") {
-    const recharges = getRecharges();
-    if (recharges.length === 0) {
-      div.innerHTML = '<p style="color:var(--sub);text-align:center;padding:30px;">暂无充值申请</p>';
-    } else {
-      div.innerHTML = recharges.map(r => `
-        <div class="order-item">
-          <div><b>¥${r.amount.toFixed(2)}</b> <span class="status ${r.status}">${r.status==="pending"?"待审核":"已通过"}</span></div>
-          <div class="meta">${r.createdAt}</div>
-          ${r.screenshot ? `<img src="${r.screenshot}" style="max-width:120px;margin-top:4px;border-radius:6px;">` : ""}
-          ${r.status === "pending" ? `<button class="btn btn-sm btn-green" style="margin-top:4px;" onclick="approveRecharge('${r.id}')">通过审核</button>` : ""}
-        </div>
-      `).join("");
-    }
-  }
-
-  if (adminTab === "withdraws") {
-    const withdraws = getWithdraws();
-    if (withdraws.length === 0) {
-      div.innerHTML = '<p style="color:var(--sub);text-align:center;padding:30px;">暂无提现申请</p>';
-    } else {
-      div.innerHTML = withdraws.map(w => `
-        <div class="order-item">
-          <div><b>¥${w.amount.toFixed(2)}</b> - ${w.method} <span class="status ${w.status}">${w.status==="pending"?"待审核":"已通过"}</span></div>
-          <div class="meta">${w.createdAt}</div>
-          ${w.status === "pending" ? `<button class="btn btn-sm btn-green" style="margin-top:4px;" onclick="approveWithdraw('${w.id}')">通过审核</button>` : ""}
-        </div>
-      `).join("");
-    }
+    `).join("") + '<p style="color:var(--sub);font-size:11px;margin-top:8px;">价格修改仅当前浏览器生效，永久修改需改代码中的DEFAULT_COURSES</p>';
   }
 
   if (adminTab === "qrcode") {
     const qr = getUserQR();
     div.innerHTML = `
-      <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">设置收款二维码（上传你的微信/支付宝收款码）</p>
-      ${qr ? `<img src="${qr}" style="max-width:200px;border-radius:12px;margin-bottom:10px;display:block;">` : "<p style='color:var(--sub);'>尚未设置</p>"}
+      <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">上传你的微信/支付宝收款码，用户下单时会看到</p>
+      ${qr ? `<img src="${qr}" style="max-width:200px;border-radius:12px;margin-bottom:10px;display:block;">` : "<p style='color:var(--sub);'>尚未设置收款码</p>"}
       <input type="file" id="qrcodeFile" accept="image/*" style="margin-bottom:10px;">
       <button class="btn btn-primary" onclick="uploadQR()">上传收款码</button>
     `;
   }
 }
 
-function markOrderDone(id) {
+function markDone(id) {
   const data = loadData();
   const orders = data.orders || [];
-  const order = orders.find(o => o.id === id);
-  if (order) { order.status = "done"; data.orders = orders; saveData(data); renderAdmin(); toast("已标记完成"); }
+  const o = orders.find(x => x.id === id);
+  if (o) { o.status = "done"; data.orders = orders; saveData(data); renderAdmin(); toast("已标记完成"); }
 }
 
-function approveRecharge(id) {
-  const data = loadData();
-  const recharges = data.recharges || [];
-  const r = recharges.find(x => x.id === id);
-  if (r && r.status === "pending") {
-    r.status = "done";
-    data.balance = (data.balance || 0) + r.amount;
-    data.recharges = recharges;
-    saveData(data);
-    renderAdmin();
-    toast("充值审核通过，余额已到账");
-  }
-}
-
-function approveWithdraw(id) {
-  const data = loadData();
-  const withdraws = data.withdraws || [];
-  const w = withdraws.find(x => x.id === id);
-  if (w && w.status === "pending") {
-    w.status = "done";
-    data.withdraws = withdraws;
-    saveData(data);
-    renderAdmin();
-    toast("提现审核通过");
-  }
-}
-
-function updatePrice(index) {
-  const input = document.getElementById("price_" + index);
-  const newPrice = parseFloat(input.value);
-  if (isNaN(newPrice) || newPrice < 0) { toast("价格无效"); return; }
+function updatePrice(i) {
+  const val = parseFloat(document.getElementById("price_" + i).value);
+  if (isNaN(val) || val < 0) { toast("价格无效"); return; }
   const data = loadData();
   if (!data.prices) data.prices = [...DEFAULT_COURSES];
-  data.prices[index].price = newPrice;
+  data.prices[i].price = val;
   saveData(data);
-  toast("价格已更新");
+  toast("价格已更新，刷新首页生效");
 }
 
 function uploadQR() {
   const file = document.getElementById("qrcodeFile").files[0];
-  if (!file) { toast("请选择收款码图片"); return; }
+  if (!file) { toast("请选择图片"); return; }
   const reader = new FileReader();
   reader.onload = function(e) {
     const data = loadData();
@@ -749,7 +519,19 @@ function toast(msg) {
   t.textContent = msg;
   t.classList.add("show");
   clearTimeout(t._tid);
-  t._tid = setTimeout(() => t.classList.remove("show"), 2000);
+  t._tid = setTimeout(() => t.classList.remove("show"), 2500);
+}
+
+function copyToClipboard(text) {
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed"; ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+  } catch(e) {}
 }
 
 // ═══════════════════════════════════════════

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh">
+<!--begin::Head-->
+
+<head>
+  <title>用户登录 –
+    kx网课  </title>
+  <meta charset="utf-8" />
+  <meta name="description" content="支持成人教育 大学生网课代看 国开 学习通 智慧树 U校园 运动世界代跑" />
+  <meta name="keywords" content="支持成人教育 大学生网课代看 国开 学习通 智慧树 U校园 运动世界代跑" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="/logo.png" />
+  <!--end::Fonts-->
+  <link rel="stylesheet" href="/static/css/font-google.css" />
+  <!--begin::Global Stylesheets Bundle(used by all pages)-->
+  <link href="/static/css/loader.css" rel="stylesheet" type="text/css" />
+  <link href="/static/css/plugins.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="/static/css/style.bundle.css" rel="stylesheet" type="text/css" />
+  <!-- 预留标签用于主题颜色切换 -->
+  <link id="theme-css" href="" rel="stylesheet" type="text/css" />
+  <!-- 主题加载 -->
+  <script src="/static/js/theme.js?v=4.3.3"></script>
+  <!--end::Global Stylesheets Bundle-->
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_app_body" class="app-blank app-blank">
+
+  <!-- 加载动画 - 开始 -->
+  <div id="pageLoading" class="page-loading">
+  <div class="page-loader">
+    <div class="loader">
+      <div class="loader-item"></div>
+      <div class="loader-item"></div>
+      <div class="loader-item"></div>
+    </div>
+  </div>
+</div>  <!-- 加载动画 - 结束 -->
+
+  <!--begin::Root-->
+  <div class="d-flex flex-column flex-root" id="app">
+    <!--begin::Authentication - Sign-in -->
+    <div class="d-flex flex-column flex-lg-row flex-column-fluid">
+      <!--begin::Aside-->
+      <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center" style="background-image: url(/static/media/misc/auth-bg.png)">
+        <!--begin::Content-->
+        <div class="d-flex flex-column flex-center p-6 p-lg-10 w-100">
+          <!--begin::Logo-->
+          <a href="javascript:;" class="mb-0 mb-lg-20 d-flex items-align-center">
+            <img alt="Logo" src="/logo.png" class="h-45px rounded" />
+            <div class="fw-bolder text-white ms-4 mt-auto mb-auto" style="font-size: 30px">kx网课</div>
+          </a>
+          <!--end::Logo-->
+          <!--begin::Image-->
+          <img class="d-none d-lg-block mx-auto w-300px w-lg-75 w-xl-450px mb-10 mb-lg-20" src="/static/media/misc/auth-screens.png" alt="" />
+          <!--end::Image-->
+        </div>
+        <!--end::Content-->
+      </div>
+      <!--begin::Aside-->
+      <!--begin::Body-->
+      <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10">
+        <!--begin::Form-->
+        <div v-show="!isFastLogin" style="display: flex" class="flex-center flex-column flex-lg-row-fluid">
+          <!--begin::Wrapper-->
+          <div class="w-lg-500px p-10">
+            <!--begin::Form-->
+            <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="#">
+              <!--begin::Heading-->
+              <div class="text-center mb-11">
+                <!--begin::Title-->
+                <h1 class="text-gray-900 fw-bolder mb-3">用户登录</h1>
+                <!--end::Title-->
+              </div>
+              <!--begin::Heading-->
+                            <!--begin::Separator-->
+              <div class="separator separator-content my-14">
+                <span class="w-125px text-gray-500 fw-semibold fs-7">账号密码登录</span>
+              </div>
+              <!--end::Separator-->
+              <!--begin::Input group=-->
+              <div class="fv-row mb-8">
+                <!--begin::Email-->
+                <input type="text" v-model="user.account" placeholder="请输入账号" name="account" autocomplete="off" class="form-control bg-transparent" />
+                <!--end::Email-->
+              </div>
+              <!--end::Input group=-->
+              <div class="fv-row mb-3">
+                <!--begin::Password-->
+                <input v-model="user.pass" type="password" placeholder="请输入密码" name="password" autocomplete="off" class="form-control bg-transparent" />
+                <!--end::Password-->
+              </div>
+              <!--end::Input group=-->
+              <!--begin::Wrapper-->
+              <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                <div></div>
+                <!--begin::Link-->
+                <a href="./findpwd" class="link-primary">忘记密码 ?</a>
+                <!--end::Link-->
+              </div>
+              <!--end::Wrapper-->
+              <!--begin::Submit button-->
+              <div class="d-grid mb-10">
+                <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+                  <!--begin::Indicator label-->
+                  <span class="indicator-label">立即登录</span>
+                  <!--end::Indicator label-->
+                  <!--begin::Indicator progress-->
+                  <span class="indicator-progress">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                  <!--end::Indicator progress-->
+                </button>
+              </div>
+              <!--end::Submit button-->
+              <!--begin::Sign up-->
+              <div class="text-gray-500 text-center fw-semibold fs-6">还没有账号?
+                <a href="./reg" class="link-primary">点击注册</a>
+              </div>
+              <!--end::Sign up-->
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Form-->
+        <!--begin::Form-->
+        <div v-show="isFastLogin" style="display: flex" class="flex-center flex-column flex-lg-row-fluid">
+          <!--begin::Wrapper-->
+          <div class="w-lg-500px p-10">
+            <!--begin::Form-->
+            <form class="form w-100" @submit.prevent="fastLogin">
+              <!--begin::Heading-->
+              <div class="text-center mb-11">
+                <!--begin::Title-->
+                <h1 class="text-gray-900 fw-bolder mb-3">快速登录</h1>
+                <!--end::Title-->
+                <div class="text-gray-500 fw-semibold fs-6">您想要登录的是以下账号吗?</div>
+              </div>
+              <!-- 用户信息 - 开始 -->
+              <div class="text-center">
+                <div class="symbol symbol-100px symbol-circle">
+                  <img id="fastUserImg" src="//q2.qlogo.cn/headimg_dl?dst_uin=10001&spec=640" alt="用户头像">
+                </div>
+                <div class="mt-3 text-gray-700 fw-bold fs-4">{{ user.account }}</div>
+              </div>
+              <!-- 用户信息 - 结束 -->
+              <!--begin::Actions-->
+              <div class="d-flex flex-wrap justify-content-center pb-lg-0 mt-8">
+                <button type="submit" id="fastLoginBtn" class="btn btn-primary me-4">
+                  <!--begin::Indicator label-->
+                  <span class="indicator-label">一键登录</span>
+                  <!--end::Indicator label-->
+                  <!--begin::Indicator progress-->
+                  <span class="indicator-progress">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                  <!--end::Indicator progress-->
+                </button>
+                <a href="javascript:;" @click="otherAccount" class="btn btn-light">取消</a>
+              </div>
+              <!--end::Actions-->
+            </form>
+            <!--end::Form-->
+          </div>
+          <!--end::Wrapper-->
+        </div>
+        <!--end::Form-->
+        <!--begin::Footer-->
+        <div class="d-flex flex-center flex-wrap px-5">
+          <!--begin::Links-->
+          <div class="d-flex flex-center fw-bold">
+            <a href="javascript:;" class="text-muted text-hover-primary px-2">Copyright ©
+              2023 - 2026              kx网课            </a>
+          </div>
+          <!--end::Links-->
+        </div>
+        <!--end::Footer-->
+      </div>
+      <!--end::Body-->
+    </div>
+    <!--end::Authentication - Sign-in-->
+    <!--管理员认证弹窗 - 开始-->
+    <div class="modal fade" id="modal_auth" tabindex="-1" aria-hidden="true">
+      <!--begin::Modal dialog-->
+      <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content rounded">
+          <!--begin::Modal header-->
+          <div class="modal-header pb-0 border-0 justify-content-end">
+            <!--begin::Close-->
+            <div class="btn btn-sm btn-icon btn-active-light-primary" data-bs-dismiss="modal">
+              <i class="ki-duotone ki-cross fs-1">
+                <span class="path1"></span>
+                <span class="path2"></span>
+              </i>
+            </div>
+            <!--end::Close-->
+          </div>
+          <!--begin::Modal header-->
+          <!--begin::Modal body-->
+          <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
+            <!--begin:Form-->
+            <form @submit.prevent="" class="form" action="#">
+              <!--begin::Heading-->
+              <div class="mb-8 text-center">
+                <!--begin::Title-->
+                <h1 class="mb-3">管理员认证</h1>
+                <!--end::Title-->
+              </div>
+              <!--end::Heading-->
+              <!--begin::Input group-->
+              <div class="d-flex flex-column mb-8 fv-row">
+                <!--begin::Label-->
+                <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                  <span class="required">认证密码</span>
+                </label>
+                <!--end::Label-->
+                <input type="text" id="authInput" v-model="authPass" @keyup.enter="login2" class="form-control form-control-solid" placeholder="请输入认证密码" autocomplete="off" />
+              </div>
+              <!--end::Input group-->
+              <!--begin::Actions-->
+              <div class="text-center">
+                <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">取消</button>
+                <button id="authloginbtn" @click="login2" type="button" class="btn btn-primary">
+                  <span class="indicator-label">确认提交</span>
+                  <span class="indicator-progress">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                </button>
+              </div>
+              <!--end::Actions-->
+            </form>
+            <!--end:Form-->
+          </div>
+          <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+      </div>
+      <!--end::Modal dialog-->
+    </div>
+    <!--管理员认证弹窗 - 结束-->
+  </div>
+  <!--end::Root-->
+  <!--begin::Javascript-->
+  <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+  <script src="/static/js/jsencrypt.min.js"></script>
+  <script src="/static/js/plugins.bundle.js"></script>
+  <script src="/static/js/scripts.bundle.js"></script>
+  <!--end::Global Javascript Bundle-->
+  <!-- 主要资源 - 开始 -->
+  <script src="/static/js/axios.min.js"></script>
+  <script src="/static/js/vue.global.min.js"></script>
+  <!-- 主要资源 - 结束 -->
+  <!-- 页面需要 - 开始 -->
+  <script src="/static/utils/index.js?v=4.3.3"></script>
+  <script src="/static/main/login.js?v=4.3.3"></script>
+  <script>
+      </script>
+  <!-- 页面需要 - 结束 -->
+  <!--end::Javascript-->
+</body>
+<!--end::Body-->
+
+</html>
