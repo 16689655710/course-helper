@@ -255,30 +255,31 @@ const STORAGE_KEY = "ch_v6";
 // COURSE DATA
 // ═══════════════════════════════════════════
 const DEFAULT_COURSES = [
-  { id:"xxxt_1", name:"超星学习通-全包（推荐）", desc:"视频+章测+考试+讨论+AI答题，1天1门，全题型支持", logo:"📖", bg:"#2b5f8a", price:12.9, cat:"xxxt", tag:"rec", tagText:"推荐", platform:"学习通", checkItems:["全包（视频+章测+考试+讨论）","仅视频和章测","仅考试","仅作业","仅讨论","学习次数"] },
-  { id:"xxxt_2", name:"超星学习通-仅视频测验", desc:"只刷视频和章节测试，不考试不作业", logo:"📖", bg:"#2b5f8a", price:9.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅刷视频和测验","仅刷视频不做测验","仅刷作业"] },
-  { id:"xxxt_3", name:"超星学习通-仅考试", desc:"只考试，保存不提交，支持所有题型", logo:"📝", bg:"#2b5f8a", price:6.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅考试-保存不提交","仅考试-自动提交","考试重做"] },
-  { id:"xxxt_4", name:"超星学习通-秒刷版", desc:"秒刷完成不清进度", logo:"⚡", bg:"#2b5f8a", price:8.9, cat:"xxxt", tag:"fast", tagText:"极速", platform:"学习通", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试"] },
-  { id:"zhs_1", name:"智慧树/知到-慢刷全包（推荐）", desc:"规律学习，每天30分钟，习惯分+互动+考试全包", logo:"🌳", bg:"#2d8a4e", price:12.9, cat:"zhs", tag:"rec", tagText:"推荐", platform:"智慧树", checkItems:["慢刷全包","仅考试","仅作业","互动分","翻转课","AI课"] },
-  { id:"zhs_2", name:"智慧树/知到-秒刷全包", desc:"秒刷拉满，视频+作业+考试，官方题库包高分", logo:"⚡", bg:"#2d8a4e", price:10.9, cat:"zhs", tag:"fast", tagText:"秒刷", platform:"智慧树", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试"] },
-  { id:"zhs_3", name:"智慧树/知到-AI+翻转课", desc:"AI课程和翻转课堂专用", logo:"🤖", bg:"#2d8a4e", price:7.9, cat:"zhs", tag:"", tagText:"", platform:"智慧树", checkItems:["AI课全包","翻转课全包"] },
-  { id:"uxy_1", name:"U校园-单元代刷", desc:"单元客观题满分，3小时时长", logo:"🏫", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园", checkItems:["单元（默认时长）","单元（自定义时长）","单元（仅必修）"] },
-  { id:"uxy_2", name:"U校园-整本代刷（推荐）", desc:"整本全包，客观题满分", logo:"🏫", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"rec", tagText:"推荐", platform:"U校园", checkItems:["整本全包","整本（仅必修）","整本（自定义时长）"] },
-  { id:"uxy_3", name:"U校园AI版-单元", desc:"AI版单元，时长分数延迟到账", logo:"🤖", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版单元","AI版单元（慢刷）","AI版单元补时长"] },
-  { id:"uxy_4", name:"U校园AI版-整本", desc:"AI版整本全包，自动上号", logo:"🤖", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版整本全包","AI版整本（仅必修）","AI版整本补时长"] },
-  { id:"imooc_1", name:"中国大学MOOC-自动更新", desc:"全包除主观题，每5天自动重新上号", logo:"🎓", bg:"#c73e3e", price:14.9, cat:"imooc", tag:"", tagText:"", platform:"中国大学MOOC", checkItems:["全包（除主观题）","仅视频","仅考试"] },
-  { id:"imooc_2", name:"国开大学-全包", desc:"视频+形考+大作业+终考+论坛，7天规律学习", logo:"🏛️", bg:"#7b3e6b", price:19.9, cat:"imooc", tag:"hot", tagText:"热销", platform:"国开", checkItems:["全包","仅视频+形考","仅终考"] },
-  { id:"imooc_3", name:"智慧职教MOOC-全包", desc:"课件+作业+测试+考试+讨论+时长，AI作答", logo:"💼", bg:"#3e7b8a", price:12.9, cat:"imooc", tag:"", tagText:"", platform:"智慧职教MOOC", checkItems:["全包","仅课件","仅考试"] },
-  { id:"eng_1", name:"iSmart-整本代刷", desc:"默认秒单，客观题满分，可自定义时长", logo:"💬", bg:"#e85d30", price:18.9, cat:"english", tag:"", tagText:"", platform:"iSmart", checkItems:["整本全包","仅单元","仅班级测试"] },
-  { id:"eng_2", name:"WeLearn-整本代刷", desc:"全部单元+时长，正确率95-100%", logo:"📗", bg:"#4a9e3e", price:15.9, cat:"english", tag:"", tagText:"", platform:"WeLearn", checkItems:["整本全包（默认25h）","整本（自定义时长）"] },
-  { id:"eng_3", name:"清华社英语-整本", desc:"做题+时长，正确率98%+，支持闯关", logo:"📕", bg:"#8b3e4a", price:35.9, cat:"english", tag:"", tagText:"", platform:"清华社英语", checkItems:["整本全包（默认16h）","整本（自定义时长）"] },
-  { id:"oth_1", name:"青书学堂-全包", desc:"课件+作业+登陆分+讨论+录播+考试", logo:"📘", bg:"#3e9e6b", price:15.9, cat:"other", tag:"", tagText:"", platform:"青书学堂", checkItems:["全包","仅课件+作业","仅考试"] },
-  { id:"oth_2", name:"学起Plus-全包", desc:"时长+次数+作业+考试全包，多课同时进行", logo:"📱", bg:"#4a6fa5", price:16.9, cat:"other", tag:"", tagText:"", platform:"学起Plus", checkItems:["全包","不考试（仅时长+作业）","仅考试"] },
-  { id:"oth_3", name:"安全微伴-全包", desc:"视频+考试全包", logo:"🛡️", bg:"#6b9e4e", price:10.9, cat:"other", tag:"", tagText:"", platform:"安全微伴", checkItems:["全包","仅视频","仅考试"] },
-  { id:"oth_4", name:"文才学堂-全包", desc:"课件+作业+讨论+资料+考试", logo:"🍋", bg:"#e8b830", price:11.9, cat:"other", tag:"", tagText:"", platform:"文才学堂", checkItems:["全包","仅课件","仅考试"] },
-  { id:"oth_5", name:"高校考试平台-全包", desc:"包视频+测验+考试，1:1跑视频", logo:"🏢", bg:"#5a6fa5", price:25.9, cat:"other", tag:"", tagText:"", platform:"高校考试", checkItems:["全包（视频+测验+考试）","仅视频","仅考试"] },
-  { id:"oth_6", name:"思纽教育-全包", desc:"包视频+作业+直播，支持32个站点", logo:"🎯", bg:"#8a4a5e", price:16.9, cat:"other", tag:"", tagText:"", platform:"思纽教育", checkItems:["全包（除考试）","仅考试"] },
-  { id:"oth_7", name:"出头科技-单考试", desc:"包考试，支持superchutou.com全部机构", logo:"💻", bg:"#6e4a8a", price:6.9, cat:"other", tag:"", tagText:"", platform:"出头科技", checkItems:["仅考试","全包"] },
+  // kxCid: kx.nopoliceman.help 平台对应脚本ID
+  { id:"xxxt_1", kxCid:15158, name:"超星学习通-全包（推荐）", desc:"视频+章测+考试+讨论+AI答题，1天1门，全题型支持", logo:"📖", bg:"#2b5f8a", price:12.9, cat:"xxxt", tag:"rec", tagText:"推荐", platform:"学习通", checkItems:["全包（视频+章测+考试+讨论）","仅视频和章测","仅考试","仅作业","仅讨论","学习次数"] },
+  { id:"xxxt_2", kxCid:6721, name:"超星学习通-仅视频测验", desc:"只刷视频和章节测试，不考试不作业", logo:"📖", bg:"#2b5f8a", price:9.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅刷视频和测验","仅刷视频不做测验","仅刷作业"] },
+  { id:"xxxt_3", kxCid:15160, name:"超星学习通-仅考试", desc:"只考试，保存不提交，支持所有题型", logo:"📝", bg:"#2b5f8a", price:6.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅考试-保存不提交","仅考试-自动提交","考试重做"] },
+  { id:"xxxt_4", kxCid:15290, name:"超星学习通-秒刷版", desc:"秒刷完成不清进度", logo:"⚡", bg:"#2b5f8a", price:8.9, cat:"xxxt", tag:"fast", tagText:"极速", platform:"学习通", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试"] },
+  { id:"zhs_1", kxCid:15189, name:"智慧树/知到-慢刷全包（推荐）", desc:"规律学习，每天30分钟，习惯分+互动+考试全包", logo:"🌳", bg:"#2d8a4e", price:12.9, cat:"zhs", tag:"rec", tagText:"推荐", platform:"智慧树", checkItems:["慢刷全包","仅考试","仅作业","互动分","翻转课","AI课"] },
+  { id:"zhs_2", kxCid:15190, name:"智慧树/知到-秒刷全包", desc:"秒刷拉满，视频+作业+考试，官方题库包高分", logo:"⚡", bg:"#2d8a4e", price:10.9, cat:"zhs", tag:"fast", tagText:"秒刷", platform:"智慧树", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试"] },
+  { id:"zhs_3", kxCid:15198, name:"智慧树/知到-AI+翻转课", desc:"AI课程和翻转课堂专用", logo:"🤖", bg:"#2d8a4e", price:7.9, cat:"zhs", tag:"", tagText:"", platform:"智慧树", checkItems:["AI课全包","翻转课全包"] },
+  { id:"uxy_1", kxCid:7003, name:"U校园-单元代刷", desc:"单元客观题满分，3小时时长", logo:"🏫", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园", checkItems:["单元（默认时长）","单元（自定义时长）","单元（仅必修）"] },
+  { id:"uxy_2", kxCid:7001, name:"U校园-整本代刷（推荐）", desc:"整本全包，客观题满分", logo:"🏫", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"rec", tagText:"推荐", platform:"U校园", checkItems:["整本全包","整本（仅必修）","整本（自定义时长）"] },
+  { id:"uxy_3", kxCid:7013, name:"U校园AI版-单元", desc:"AI版单元，时长分数延迟到账", logo:"🤖", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版单元","AI版单元（慢刷）","AI版单元补时长"] },
+  { id:"uxy_4", kxCid:7012, name:"U校园AI版-整本", desc:"AI版整本全包，自动上号", logo:"🤖", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版整本全包","AI版整本（仅必修）","AI版整本补时长"] },
+  { id:"imooc_1", kxCid:11516, name:"中国大学MOOC-自动更新", desc:"全包除主观题，每5天自动重新上号", logo:"🎓", bg:"#c73e3e", price:14.9, cat:"imooc", tag:"", tagText:"", platform:"中国大学MOOC", checkItems:["全包（除主观题）","仅视频","仅考试"] },
+  { id:"imooc_2", kxCid:14411, name:"国开大学-全包", desc:"视频+形考+大作业+终考+论坛，7天规律学习", logo:"🏛️", bg:"#7b3e6b", price:19.9, cat:"imooc", tag:"hot", tagText:"热销", platform:"国开", checkItems:["全包","仅视频+形考","仅终考"] },
+  { id:"imooc_3", kxCid:6721, name:"智慧职教MOOC-全包", desc:"课件+作业+测试+考试+讨论+时长，AI作答", logo:"💼", bg:"#3e7b8a", price:12.9, cat:"imooc", tag:"", tagText:"", platform:"智慧职教MOOC", checkItems:["全包","仅课件","仅考试"] },
+  { id:"eng_1", kxCid:15752, name:"iSmart-整本代刷", desc:"默认秒单，客观题满分，可自定义时长", logo:"💬", bg:"#e85d30", price:18.9, cat:"english", tag:"", tagText:"", platform:"iSmart", checkItems:["整本全包","仅单元","仅班级测试"] },
+  { id:"eng_2", kxCid:6721, name:"WeLearn-整本代刷", desc:"全部单元+时长，正确率95-100%", logo:"📗", bg:"#4a9e3e", price:15.9, cat:"english", tag:"", tagText:"", platform:"WeLearn", checkItems:["整本全包（默认25h）","整本（自定义时长）"] },
+  { id:"eng_3", kxCid:6721, name:"清华社英语-整本", desc:"做题+时长，正确率98%+，支持闯关", logo:"📕", bg:"#8b3e4a", price:35.9, cat:"english", tag:"", tagText:"", platform:"清华社英语", checkItems:["整本全包（默认16h）","整本（自定义时长）"] },
+  { id:"oth_1", kxCid:6721, name:"青书学堂-全包", desc:"课件+作业+登陆分+讨论+录播+考试", logo:"📘", bg:"#3e9e6b", price:15.9, cat:"other", tag:"", tagText:"", platform:"青书学堂", checkItems:["全包","仅课件+作业","仅考试"] },
+  { id:"oth_2", kxCid:6721, name:"学起Plus-全包", desc:"时长+次数+作业+考试全包，多课同时进行", logo:"📱", bg:"#4a6fa5", price:16.9, cat:"other", tag:"", tagText:"", platform:"学起Plus", checkItems:["全包","不考试（仅时长+作业）","仅考试"] },
+  { id:"oth_3", kxCid:6721, name:"安全微伴-全包", desc:"视频+考试全包", logo:"🛡️", bg:"#6b9e4e", price:10.9, cat:"other", tag:"", tagText:"", platform:"安全微伴", checkItems:["全包","仅视频","仅考试"] },
+  { id:"oth_4", kxCid:6721, name:"文才学堂-全包", desc:"课件+作业+讨论+资料+考试", logo:"🍋", bg:"#e8b830", price:11.9, cat:"other", tag:"", tagText:"", platform:"文才学堂", checkItems:["全包","仅课件","仅考试"] },
+  { id:"oth_5", kxCid:6721, name:"高校考试平台-全包", desc:"包视频+测验+考试，1:1跑视频", logo:"🏢", bg:"#5a6fa5", price:25.9, cat:"other", tag:"", tagText:"", platform:"高校考试", checkItems:["全包（视频+测验+考试）","仅视频","仅考试"] },
+  { id:"oth_6", kxCid:6721, name:"思纽教育-全包", desc:"包视频+作业+直播，支持32个站点", logo:"🎯", bg:"#8a4a5e", price:16.9, cat:"other", tag:"", tagText:"", platform:"思纽教育", checkItems:["全包（除考试）","仅考试"] },
+  { id:"oth_7", kxCid:6721, name:"出头科技-单考试", desc:"包考试，支持superchutou.com全部机构", logo:"💻", bg:"#6e4a8a", price:6.9, cat:"other", tag:"", tagText:"", platform:"出头科技", checkItems:["仅考试","全包"] },
 ];
 
 // ═══════════════════════════════════════════
@@ -390,25 +391,19 @@ async function checkCourse(){
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({
         endpoint:"/api/v2/checkcourses/get",
-        data:{cid:parseInt(c.cid)||6721, school, account:account, pass:password}
+        data:{cid:c.kxCid||6721, school, account, pass:password}
       })
     });
     const result=await resp.json();
     document.getElementById("checkLoading").classList.add("hidden");
 
-    if(result.code===1 && result.data){
-      // Success: show course list
+    if(result.code===1 && result.data && Array.isArray(result.data) && result.data.length>0){
+      // Success: show real course list from kx
       checkedCourseData=result.data;
       renderCheckedCourses(result.data, c);
     } else {
-      // Show error
-      let errMsg=result.msg||"查询失败，请检查账号密码是否正确";
-      document.getElementById("checkResultArea").classList.remove("hidden");
-      document.getElementById("checkResultArea").innerHTML=`
-        <div class="err-msg">❌ ${errMsg}</div>
-        <p style="font-size:11px;color:var(--sub);">请检查账号密码后重试，或联系客服</p>
-      `;
-      btn.classList.remove("hidden");
+      // API returned error or empty — fall back to manual selection
+      showManualCourseSelect(c);
     }
   } catch(e){
     document.getElementById("checkLoading").classList.add("hidden");
