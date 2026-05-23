@@ -19,70 +19,69 @@
   .page { display: none; }
   .page.active { display: block; }
 
-  .header { text-align: center; padding: 20px 16px; }
-  .header .icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 14px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-  .header h1 { font-size: 18px; font-weight: 700; }
-  .header p { font-size: 11px; color: var(--sub); margin-top: 3px; }
+  .header { text-align: center; padding: 18px 14px; }
+  .header .icon { width: 46px; height: 46px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 12px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .header h1 { font-size: 17px; font-weight: 700; }
+  .header p { font-size: 11px; color: var(--sub); margin-top: 2px; }
 
   .search { background: var(--card); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .search input { flex: 1; background: none; border: none; outline: none; color: var(--text); font-size: 14px; }
+  .search input { flex: 1; background: none; border: none; outline: none; color: var(--text); font-size: 13px; }
   .search input::placeholder { color: var(--sub); }
 
-  .cats { display: flex; gap: 6px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 2px; }
-  .cat { padding: 6px 12px; border-radius: 16px; font-size: 11px; white-space: nowrap; background: var(--card); color: var(--sub); cursor: pointer; border: none; font-family: inherit; }
+  .cats { display: flex; gap: 5px; margin-bottom: 12px; overflow-x: auto; }
+  .cat { padding: 5px 10px; border-radius: 14px; font-size: 11px; white-space: nowrap; background: var(--card); color: var(--sub); cursor: pointer; border: none; font-family: inherit; }
   .cat.active { background: var(--accent); color: #fff; }
 
   .course-grid { display: flex; flex-direction: column; gap: 8px; padding-bottom: 80px; }
   .course-card {
-    background: var(--card); border-radius: 12px; padding: 14px; cursor: pointer;
+    background: var(--card); border-radius: 12px; padding: 12px 14px; cursor: pointer;
     transition: .15s; text-decoration: none; color: inherit; display: flex;
     align-items: flex-start; gap: 10px;
   }
   .course-card:active { transform: scale(0.98); background: #252545; }
-  .course-card .logo { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .course-card .logo { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
   .course-card .info { flex: 1; min-width: 0; }
-  .course-card .name { font-size: 14px; font-weight: 600; }
-  .course-card .desc { font-size: 11px; color: var(--sub); margin-top: 2px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .course-card .name { font-size: 13px; font-weight: 600; }
+  .course-card .desc { font-size: 10px; color: var(--sub); margin-top: 2px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .course-card .right { text-align: right; flex-shrink: 0; }
-  .course-card .price { font-size: 18px; font-weight: 800; color: var(--gold); }
-  .course-card .price .u { font-size: 11px; font-weight: 400; }
-  .course-card .tag { font-size: 9px; padding: 1px 6px; border-radius: 4px; display: inline-block; margin-top: 2px; }
+  .course-card .price { font-size: 17px; font-weight: 800; color: var(--gold); }
+  .course-card .price .u { font-size: 10px; font-weight: 400; }
+  .course-card .tag { font-size: 9px; padding: 1px 5px; border-radius: 3px; display: inline-block; margin-top: 2px; }
   .tag.hot { background: rgba(245,158,11,.15); color: #f59e0b; }
   .tag.fast { background: rgba(74,222,128,.12); color: var(--green); }
   .tag.rec { background: rgba(108,99,255,.15); color: var(--accent); }
-  .arrow { color: var(--sub); font-size: 16px; align-self: center; }
+  .arrow { color: var(--sub); font-size: 15px; align-self: center; }
 
-  .back { color: var(--accent); font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; margin-bottom: 10px; }
-  .order-card { background: var(--card); border-radius: 14px; padding: 16px; margin-bottom: 12px; }
-  .order-card h3 { font-size: 16px; margin-bottom: 4px; }
-  .order-card .price-big { font-size: 26px; font-weight: 800; color: var(--gold); }
+  .back { color: var(--accent); font-size: 13px; cursor: pointer; text-decoration: none; display: inline-block; margin-bottom: 10px; }
+  .order-card { background: var(--card); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
+  .order-card h3 { font-size: 15px; }
 
-  .form-group { margin-bottom: 12px; }
-  .form-group label { display: block; font-size: 12px; color: var(--sub); margin-bottom: 5px; }
-  .form-group input, .form-group textarea, .form-group select {
-    width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid #2a2a40;
+  .form-group { margin-bottom: 10px; }
+  .form-group label { display: block; font-size: 12px; color: var(--sub); margin-bottom: 4px; }
+  .form-group input, .form-group textarea {
+    width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #2a2a40;
     background: var(--card); color: var(--text); font-size: 14px; outline: none;
     font-family: inherit; resize: vertical;
   }
   .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
 
-  .course-checklist { max-height: 400px; overflow-y: auto; margin-bottom: 12px; }
+  .course-checklist { max-height: 350px; overflow-y: auto; margin-bottom: 10px; }
   .check-item {
-    display: flex; align-items: flex-start; gap: 10px; padding: 12px;
-    background: var(--card); border-radius: 10px; margin-bottom: 8px;
-    cursor: pointer; border: 2px solid transparent; transition: .15s;
+    display: flex; align-items: flex-start; gap: 8px; padding: 10px 12px;
+    background: var(--card); border-radius: 8px; margin-bottom: 6px;
+    cursor: pointer; border: 2px solid transparent;
   }
   .check-item.checked { border-color: var(--accent); background: #1e1e3a; }
-  .check-item input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--accent); margin-top: 2px; flex-shrink: 0; }
+  .check-item input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); margin-top: 2px; flex-shrink: 0; }
   .check-item .ci { flex: 1; }
   .check-item .cn { font-size: 13px; font-weight: 600; }
-  .check-item .cd { font-size: 11px; color: var(--sub); margin-top: 2px; }
+  .check-item .cd { font-size: 10px; color: var(--sub); }
 
-  .qr-section { text-align: center; margin: 14px 0; }
-  .qr-section img { width: 180px; height: 180px; border-radius: 12px; border: 2px dashed #333; }
+  .qr-section { text-align: center; margin: 12px 0; }
+  .qr-section img { width: 160px; height: 160px; border-radius: 12px; border: 2px dashed #333; }
 
   .btn {
-    width: 100%; padding: 14px; border-radius: 10px; border: none; font-size: 15px;
+    width: 100%; padding: 12px; border-radius: 8px; border: none; font-size: 14px;
     font-weight: 600; cursor: pointer; color: #fff; font-family: inherit;
   }
   .btn-primary { background: var(--accent); }
@@ -90,11 +89,11 @@
   .btn-green { background: var(--green); color: #000; }
   .btn-red { background: var(--red); }
   .btn-outline { background: none; border: 1px solid var(--accent); color: var(--accent); }
-  .btn-sm { padding: 8px 14px; font-size: 12px; width: auto; }
+  .btn-sm { padding: 6px 12px; font-size: 11px; width: auto; }
 
-  .order-item { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 8px; font-size: 13px; }
-  .order-item .meta { color: var(--sub); font-size: 11px; margin-top: 4px; }
-  .status { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; margin-left: 4px; }
+  .order-item { background: var(--card); border-radius: 10px; padding: 10px; margin-bottom: 6px; font-size: 12px; }
+  .order-item .meta { color: var(--sub); font-size: 10px; margin-top: 3px; }
+  .status { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 9px; margin-left: 4px; }
   .status.pending { background: rgba(245,158,11,.2); color: #f59e0b; }
   .status.done { background: rgba(74,222,128,.2); color: var(--green); }
   .inline-row { display: flex; gap: 6px; align-items: center; }
@@ -108,22 +107,23 @@
   }
   .bottom-nav .nav-item {
     display: flex; flex-direction: column; align-items: center; gap: 2px;
-    font-size: 10px; color: var(--sub); cursor: pointer; background: none; border: none; font-family: inherit;
+    font-size: 9px; color: var(--sub); cursor: pointer; background: none; border: none; font-family: inherit;
   }
-  .bottom-nav .nav-item .nav-icon { font-size: 18px; }
+  .bottom-nav .nav-item .nav-icon { font-size: 17px; }
 
   .toast {
     position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
-    background: #333; color: #fff; padding: 10px 24px; border-radius: 20px;
-    font-size: 13px; z-index: 999; opacity: 0; pointer-events: none; transition: opacity .3s;
+    background: #333; color: #fff; padding: 8px 20px; border-radius: 16px;
+    font-size: 12px; z-index: 999; opacity: 0; pointer-events: none; transition: opacity .3s;
   }
   .toast.show { opacity: 1; }
-  .footer { text-align: center; padding: 16px 16px 80px; color: var(--sub); font-size: 10px; }
-  .notice { background: rgba(255,184,0,.06); border-left: 3px solid var(--gold); border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 11px; color: var(--gold); }
+  .footer { text-align: center; padding: 14px 14px 80px; color: var(--sub); font-size: 10px; }
+  .notice { background: rgba(255,184,0,.05); border-left: 3px solid var(--gold); border-radius: 8px; padding: 8px 10px; margin: 8px 0; font-size: 11px; color: var(--gold); }
+  .err-msg { background: rgba(239,68,68,.08); border-radius: 8px; padding: 8px 10px; margin: 8px 0; font-size: 11px; color: var(--red); }
+  .loading { text-align: center; padding: 20px; color: var(--sub); }
+  .loading .spinner { display: inline-block; width: 24px; height: 24px; border: 2px solid #333; border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
   .hidden { display: none !important; }
-
-  .link-btn { color: var(--accent); text-decoration: underline; cursor: pointer; font-size: 12px; }
-  pre { background: #111; border-radius: 8px; padding: 10px; font-size: 11px; overflow-x: auto; margin: 8px 0; white-space: pre-wrap; word-break: break-all; }
 </style>
 </head>
 <body>
@@ -135,7 +135,7 @@
     <div class="header">
       <div class="icon">📚</div>
       <h1>网课代刷平台</h1>
-      <p>选脚本 → 填信息 → 选课程 → 支付 → 等待完成</p>
+      <p>选脚本 → 填信息 → 查课 → 勾选 → 支付 → 完成</p>
     </div>
     <div class="search">
       <span>🔍</span>
@@ -153,7 +153,7 @@
     <div class="course-grid" id="courseGrid"></div>
     <div class="footer">
       安全可靠 · 不满意退款<br>
-      <a href="#" onclick="showPage('admin-login')" style="color:#222;font-size:9px;">管理入口</a>
+      <a href="#" onclick="showPage('admin-login')" style="color:#222;font-size:9px;">管理</a>
     </div>
     <div class="bottom-nav">
       <button class="nav-item" onclick="showPage('home')"><span class="nav-icon">🏠</span>首页</button>
@@ -162,61 +162,43 @@
     </div>
   </div>
 
-  <!-- ==================== ORDER STEP 1: INFO ==================== -->
+  <!-- ==================== ORDER ==================== -->
   <div class="page" id="page-order">
     <a class="back" href="#" onclick="showPage('home')">← 返回</a>
     <div class="order-card" id="orderCourseInfo"></div>
 
     <div class="form-group">
-      <label>学校/机构名称（必填）</label>
-      <input type="text" id="orderSchool" placeholder="如：XX大学 · 用于自动分配同地区IP">
+      <label>学校/机构名称</label>
+      <input type="text" id="orderSchool" placeholder="如：XX大学">
     </div>
     <div class="form-group">
-      <label>平台账号（必填）</label>
+      <label>平台账号</label>
       <input type="text" id="orderAccount" placeholder="手机号/学号">
     </div>
     <div class="form-group">
-      <label>平台密码（必填）</label>
+      <label>平台密码</label>
       <input type="password" id="orderPassword" placeholder="登录密码">
     </div>
 
-    <div class="notice" style="font-size:13px;">
-      <b>下一步：</b>填写账号密码后，点击下方按钮进入<b>「查课选课」</b>界面，选择你需要代刷的具体课程。
-    </div>
+    <div id="checkResultArea" class="hidden"></div>
+    <div id="checkLoading" class="loading hidden"><div class="spinner"></div><p style="margin-top:8px;">正在查询课程，请稍候...</p></div>
 
-    <button class="btn btn-primary" onclick="goToCourseSelect()">下一步：查课选课 →</button>
-  </div>
+    <button class="btn btn-primary" id="btnCheckCourse" onclick="checkCourse()">查询课程</button>
 
-  <!-- ==================== ORDER STEP 2: SELECT COURSES ==================== -->
-  <div class="page" id="page-course-select">
-    <a class="back" href="#" onclick="showPage('order', window._pageData)">← 上一步</a>
-    <div class="order-card">
-      <h3>📋 选择需要代刷的课程</h3>
-      <p style="color:var(--sub);font-size:12px;margin-top:4px;">
-        请根据你的平台账号实际课程，<b>勾选</b>需要代刷的项目。不确定的话全选即可。
-      </p>
+    <div class="course-checklist hidden" id="courseChecklistWrap"></div>
+    <div class="hidden" id="paySection">
+      <div class="qr-section">
+        <p style="color:var(--red);margin-bottom:4px;">微信扫码支付</p>
+        <img id="paymentQR" src="" alt="收款码" onerror="this.style.display='none'" style="width:150px;height:150px;">
+        <p>总价：<b id="orderTotalPrice" style="color:var(--gold);font-size:16px;"></b></p>
+      </div>
+      <div class="form-group">
+        <label>支付截图</label>
+        <input type="file" id="orderScreenshot" accept="image/*" style="padding:8px;">
+      </div>
+      <div class="notice">提交后24h内处理，期间请勿登录账号</div>
+      <button class="btn btn-gold" onclick="submitFullOrder()">确认支付并下单</button>
     </div>
-
-    <div style="margin-bottom:10px;display:flex;gap:8px;">
-      <button class="btn btn-sm btn-outline" onclick="selectAll()">全选</button>
-      <button class="btn btn-sm btn-outline" onclick="deselectAll()">取消全选</button>
-    </div>
-
-    <div class="course-checklist" id="courseChecklist"></div>
-
-    <div class="qr-section">
-      <p style="color:var(--red);margin-bottom:6px;">支付完成后提交</p>
-      <img id="paymentQR" src="" alt="收款码" onerror="this.style.display='none'" style="width:160px;height:160px;">
-      <p>总价：<b id="orderTotalPrice" style="color:var(--gold);font-size:18px;"></b></p>
-    </div>
-    <div class="form-group">
-      <label>支付截图</label>
-      <input type="file" id="orderScreenshot" accept="image/*" style="padding:8px;">
-    </div>
-    <div class="notice">
-      提交后工作人员将在 kx 平台为您下单，24h内完成处理。
-    </div>
-    <button class="btn btn-gold" onclick="submitFullOrder()">提交订单</button>
   </div>
 
   <!-- ==================== MY ORDERS ==================== -->
@@ -242,11 +224,11 @@
     <button class="btn btn-primary" onclick="adminLogin()">登录</button>
   </div>
 
-  <!-- ==================== ADMIN PANEL ==================== -->
+  <!-- ==================== ADMIN ==================== -->
   <div class="page" id="page-admin">
     <a class="back" href="#" onclick="showPage('home')">← 退出</a>
     <div class="order-card"><h3>🔧 管理后台</h3></div>
-    <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;">
+    <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;">
       <button class="btn btn-sm btn-primary" onclick="adminTab='orders';renderAdmin();">订单</button>
       <button class="btn btn-sm btn-outline" onclick="adminTab='prices';renderAdmin();">价格</button>
       <button class="btn btn-sm btn-outline" onclick="adminTab='qrcode';renderAdmin();">收款码</button>
@@ -260,272 +242,325 @@
 
 <script>
 // ═══════════════════════════════════════════
+// CONFIG — 修改 PROXY_URL 为你部署的代理地址
+// ═══════════════════════════════════════════
+const PROXY_URL = "https://kx-proxy.your-worker.workers.dev";
+const KX_USER = "16689655710";
+const KX_PASS = "liguiteng1223";
+const PRICE_MULTIPLIER = 5; // 脚本价格倍数
+const ADMIN_PWD = "admin888";
+const STORAGE_KEY = "ch_v6";
+
+// ═══════════════════════════════════════════
 // COURSE DATA
 // ═══════════════════════════════════════════
 const DEFAULT_COURSES = [
-  { id:"1", name:"超星学习通-全包（推荐）", desc:"视频+章测+考试+讨论+AI答题，1天1门，全题型支持", logo:"📖", bg:"#2b5f8a", price:12.9, cat:"xxxt", tag:"rec", tagText:"推荐", platform:"学习通", checkItems:["全包（视频+章测+考试+讨论）","仅视频和章测（不考试）","仅考试（不刷视频）","仅作业","仅讨论","学习次数","阅读时长","积分课"] },
-  { id:"2", name:"超星学习通-仅视频测验", desc:"只刷视频和章节测试，不考试不作业", logo:"📖", bg:"#2b5f8a", price:9.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅刷视频和测验","仅刷视频不做测验","仅刷作业"] },
-  { id:"3", name:"超星学习通-仅考试", desc:"只考试，保存不提交，支持所有题型", logo:"📝", bg:"#2b5f8a", price:6.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅考试-保存不提交","仅考试-自动提交","考试重做","人脸考试"] },
-  { id:"4", name:"超星学习通-秒刷版", desc:"秒刷完成不清进度，支持带锁课程", logo:"⚡", bg:"#2b5f8a", price:8.9, cat:"xxxt", tag:"fast", tagText:"极速", platform:"学习通", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试"] },
-  { id:"5", name:"智慧树/知到-慢刷全包（推荐）", desc:"规律学习，每天30分钟，不弹异常，习惯分+互动+考试全包", logo:"🌳", bg:"#2d8a4e", price:12.9, cat:"zhs", tag:"rec", tagText:"推荐", platform:"智慧树", checkItems:["慢刷全包","仅考试","仅作业","互动分","翻转课","AI课"] },
-  { id:"6", name:"智慧树/知到-秒刷全包", desc:"秒刷拉满，视频+作业+考试，官方题库包高分", logo:"⚡", bg:"#2d8a4e", price:10.9, cat:"zhs", tag:"fast", tagText:"秒刷", platform:"智慧树", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试","补互动分"] },
-  { id:"7", name:"智慧树/知到-AI课+翻转课", desc:"AI课程和翻转课堂专用，包进度+掌握度", logo:"🤖", bg:"#2d8a4e", price:7.9, cat:"zhs", tag:"", tagText:"", platform:"智慧树", checkItems:["AI课全包","翻转课全包","仅课件","仅考试"] },
-  { id:"8", name:"U校园-单元代刷", desc:"单元客观题满分，3小时时长，支持自定义分数", logo:"🏫", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园", checkItems:["单元（默认时长）","单元（自定义时长）","单元（仅必修）","单元（慢刷）"] },
-  { id:"9", name:"U校园-整本代刷（推荐）", desc:"整本所有单元全包，客观题满分，可自定义时长", logo:"🏫", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"rec", tagText:"推荐", platform:"U校园", checkItems:["整本全包","整本（仅必修）","整本（自定义时长）","整本（每3天一单元）"] },
-  { id:"10", name:"U校园AI版-单元", desc:"AI版专属单元，时长分数延迟到账", logo:"🤖", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版单元","AI版单元（慢刷）","AI版单元（不满分）","AI版单元补时长"] },
-  { id:"11", name:"U校园AI版-整本", desc:"AI版整本全包，没开放单元自动上号", logo:"🤖", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版整本全包","AI版整本（仅必修）","AI版整本补时长","AI版整本仅做题"] },
-  { id:"12", name:"中国大学MOOC-自动更新", desc:"全包除主观题，每5天自动重新上号", logo:"🎓", bg:"#c73e3e", price:14.9, cat:"imooc", tag:"", tagText:"", platform:"中国大学MOOC", checkItems:["全包（除主观题）","仅视频","仅考试","仅讨论"] },
-  { id:"13", name:"国开大学-全包", desc:"视频+形考+大作业+终考+时长+论坛，7天规律学习", logo:"🏛️", bg:"#7b3e6b", price:19.9, cat:"imooc", tag:"hot", tagText:"热销", platform:"国开", checkItems:["全包","仅视频+形考","仅终考","仅论坛"] },
-  { id:"14", name:"智慧职教MOOC-全包", desc:"课件+作业+测试+考试+讨论+时长，AI作答讨论", logo:"💼", bg:"#3e7b8a", price:12.9, cat:"imooc", tag:"", tagText:"", platform:"智慧职教MOOC", checkItems:["全包","仅课件","仅考试"] },
-  { id:"15", name:"iSmart-整本代刷", desc:"默认秒单，客观题满分，可自定义时长慢刷", logo:"💬", bg:"#e85d30", price:18.9, cat:"english", tag:"", tagText:"", platform:"iSmart", checkItems:["整本全包","仅单元","仅班级测试","慢刷模式"] },
-  { id:"16", name:"WeLearn-整本代刷", desc:"全部单元+时长，正确率95-100%，先做题后补时长", logo:"📗", bg:"#4a9e3e", price:15.9, cat:"english", tag:"", tagText:"", platform:"WeLearn", checkItems:["整本全包（默认25h）","整本（自定义时长）","仅做题不补时长"] },
-  { id:"17", name:"清华社英语-整本", desc:"做题+时长，正确率98%+，支持闯关模式", logo:"📕", bg:"#8b3e4a", price:35.9, cat:"english", tag:"", tagText:"", platform:"清华社英语", checkItems:["整本全包（默认16h）","整本（自定义时长）","整本（闯关模式）"] },
-  { id:"18", name:"青书学堂-全包", desc:"课件+作业+登陆分+讨论+录播+考试，AI作答主观题", logo:"📘", bg:"#3e9e6b", price:15.9, cat:"other", tag:"", tagText:"", platform:"青书学堂", checkItems:["全包","仅课件+作业","仅考试","保存不提交"] },
-  { id:"19", name:"学起Plus-全包", desc:"时长+次数+作业+考试全包，多课同时进行", logo:"📱", bg:"#4a6fa5", price:16.9, cat:"other", tag:"", tagText:"", platform:"学起Plus", checkItems:["全包","不考试（仅时长+作业）","仅考试","仅考试（固定试卷）"] },
-  { id:"20", name:"安全微伴-全包", desc:"视频+考试全包，下单后勿挤号", logo:"🛡️", bg:"#6b9e4e", price:10.9, cat:"other", tag:"", tagText:"", platform:"安全微伴", checkItems:["全包","仅视频","仅考试"] },
-  { id:"21", name:"文才学堂-全包", desc:"课件+作业+讨论+资料+考试", logo:"🍋", bg:"#e8b830", price:11.9, cat:"other", tag:"", tagText:"", platform:"文才学堂", checkItems:["全包","仅课件","仅考试"] },
-  { id:"22", name:"高校考试平台-全包", desc:"包视频+测验+考试，1:1跑视频", logo:"🏢", bg:"#5a6fa5", price:25.9, cat:"other", tag:"", tagText:"", platform:"高校考试平台", checkItems:["全包（视频+测验+考试）","仅视频","仅考试"] },
-  { id:"23", name:"思纽教育-全包", desc:"包视频+作业+直播，支持32个站点", logo:"🎯", bg:"#8a4a5e", price:16.9, cat:"other", tag:"", tagText:"", platform:"思纽教育", checkItems:["全包（除考试）","仅考试"] },
-  { id:"24", name:"出头科技-单考试", desc:"包考试，支持superchutou.com全部机构", logo:"💻", bg:"#6e4a8a", price:6.9, cat:"other", tag:"", tagText:"", platform:"出头科技", checkItems:["仅考试","全包"] },
+  { id:"xxxt_1", name:"超星学习通-全包（推荐）", desc:"视频+章测+考试+讨论+AI答题，1天1门，全题型支持", logo:"📖", bg:"#2b5f8a", price:12.9, cat:"xxxt", tag:"rec", tagText:"推荐", platform:"学习通", checkItems:["全包（视频+章测+考试+讨论）","仅视频和章测","仅考试","仅作业","仅讨论","学习次数"] },
+  { id:"xxxt_2", name:"超星学习通-仅视频测验", desc:"只刷视频和章节测试，不考试不作业", logo:"📖", bg:"#2b5f8a", price:9.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅刷视频和测验","仅刷视频不做测验","仅刷作业"] },
+  { id:"xxxt_3", name:"超星学习通-仅考试", desc:"只考试，保存不提交，支持所有题型", logo:"📝", bg:"#2b5f8a", price:6.9, cat:"xxxt", tag:"", tagText:"", platform:"学习通", checkItems:["仅考试-保存不提交","仅考试-自动提交","考试重做"] },
+  { id:"xxxt_4", name:"超星学习通-秒刷版", desc:"秒刷完成不清进度", logo:"⚡", bg:"#2b5f8a", price:8.9, cat:"xxxt", tag:"fast", tagText:"极速", platform:"学习通", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试"] },
+  { id:"zhs_1", name:"智慧树/知到-慢刷全包（推荐）", desc:"规律学习，每天30分钟，习惯分+互动+考试全包", logo:"🌳", bg:"#2d8a4e", price:12.9, cat:"zhs", tag:"rec", tagText:"推荐", platform:"智慧树", checkItems:["慢刷全包","仅考试","仅作业","互动分","翻转课","AI课"] },
+  { id:"zhs_2", name:"智慧树/知到-秒刷全包", desc:"秒刷拉满，视频+作业+考试，官方题库包高分", logo:"⚡", bg:"#2d8a4e", price:10.9, cat:"zhs", tag:"fast", tagText:"秒刷", platform:"智慧树", checkItems:["秒刷全包","秒刷仅课件","秒刷仅考试"] },
+  { id:"zhs_3", name:"智慧树/知到-AI+翻转课", desc:"AI课程和翻转课堂专用", logo:"🤖", bg:"#2d8a4e", price:7.9, cat:"zhs", tag:"", tagText:"", platform:"智慧树", checkItems:["AI课全包","翻转课全包"] },
+  { id:"uxy_1", name:"U校园-单元代刷", desc:"单元客观题满分，3小时时长", logo:"🏫", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园", checkItems:["单元（默认时长）","单元（自定义时长）","单元（仅必修）"] },
+  { id:"uxy_2", name:"U校园-整本代刷（推荐）", desc:"整本全包，客观题满分", logo:"🏫", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"rec", tagText:"推荐", platform:"U校园", checkItems:["整本全包","整本（仅必修）","整本（自定义时长）"] },
+  { id:"uxy_3", name:"U校园AI版-单元", desc:"AI版单元，时长分数延迟到账", logo:"🤖", bg:"#5c3e9e", price:13.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版单元","AI版单元（慢刷）","AI版单元补时长"] },
+  { id:"uxy_4", name:"U校园AI版-整本", desc:"AI版整本全包，自动上号", logo:"🤖", bg:"#5c3e9e", price:29.9, cat:"uxy", tag:"", tagText:"", platform:"U校园AI版", checkItems:["AI版整本全包","AI版整本（仅必修）","AI版整本补时长"] },
+  { id:"imooc_1", name:"中国大学MOOC-自动更新", desc:"全包除主观题，每5天自动重新上号", logo:"🎓", bg:"#c73e3e", price:14.9, cat:"imooc", tag:"", tagText:"", platform:"中国大学MOOC", checkItems:["全包（除主观题）","仅视频","仅考试"] },
+  { id:"imooc_2", name:"国开大学-全包", desc:"视频+形考+大作业+终考+论坛，7天规律学习", logo:"🏛️", bg:"#7b3e6b", price:19.9, cat:"imooc", tag:"hot", tagText:"热销", platform:"国开", checkItems:["全包","仅视频+形考","仅终考"] },
+  { id:"imooc_3", name:"智慧职教MOOC-全包", desc:"课件+作业+测试+考试+讨论+时长，AI作答", logo:"💼", bg:"#3e7b8a", price:12.9, cat:"imooc", tag:"", tagText:"", platform:"智慧职教MOOC", checkItems:["全包","仅课件","仅考试"] },
+  { id:"eng_1", name:"iSmart-整本代刷", desc:"默认秒单，客观题满分，可自定义时长", logo:"💬", bg:"#e85d30", price:18.9, cat:"english", tag:"", tagText:"", platform:"iSmart", checkItems:["整本全包","仅单元","仅班级测试"] },
+  { id:"eng_2", name:"WeLearn-整本代刷", desc:"全部单元+时长，正确率95-100%", logo:"📗", bg:"#4a9e3e", price:15.9, cat:"english", tag:"", tagText:"", platform:"WeLearn", checkItems:["整本全包（默认25h）","整本（自定义时长）"] },
+  { id:"eng_3", name:"清华社英语-整本", desc:"做题+时长，正确率98%+，支持闯关", logo:"📕", bg:"#8b3e4a", price:35.9, cat:"english", tag:"", tagText:"", platform:"清华社英语", checkItems:["整本全包（默认16h）","整本（自定义时长）"] },
+  { id:"oth_1", name:"青书学堂-全包", desc:"课件+作业+登陆分+讨论+录播+考试", logo:"📘", bg:"#3e9e6b", price:15.9, cat:"other", tag:"", tagText:"", platform:"青书学堂", checkItems:["全包","仅课件+作业","仅考试"] },
+  { id:"oth_2", name:"学起Plus-全包", desc:"时长+次数+作业+考试全包，多课同时进行", logo:"📱", bg:"#4a6fa5", price:16.9, cat:"other", tag:"", tagText:"", platform:"学起Plus", checkItems:["全包","不考试（仅时长+作业）","仅考试"] },
+  { id:"oth_3", name:"安全微伴-全包", desc:"视频+考试全包", logo:"🛡️", bg:"#6b9e4e", price:10.9, cat:"other", tag:"", tagText:"", platform:"安全微伴", checkItems:["全包","仅视频","仅考试"] },
+  { id:"oth_4", name:"文才学堂-全包", desc:"课件+作业+讨论+资料+考试", logo:"🍋", bg:"#e8b830", price:11.9, cat:"other", tag:"", tagText:"", platform:"文才学堂", checkItems:["全包","仅课件","仅考试"] },
+  { id:"oth_5", name:"高校考试平台-全包", desc:"包视频+测验+考试，1:1跑视频", logo:"🏢", bg:"#5a6fa5", price:25.9, cat:"other", tag:"", tagText:"", platform:"高校考试", checkItems:["全包（视频+测验+考试）","仅视频","仅考试"] },
+  { id:"oth_6", name:"思纽教育-全包", desc:"包视频+作业+直播，支持32个站点", logo:"🎯", bg:"#8a4a5e", price:16.9, cat:"other", tag:"", tagText:"", platform:"思纽教育", checkItems:["全包（除考试）","仅考试"] },
+  { id:"oth_7", name:"出头科技-单考试", desc:"包考试，支持superchutou.com全部机构", logo:"💻", bg:"#6e4a8a", price:6.9, cat:"other", tag:"", tagText:"", platform:"出头科技", checkItems:["仅考试","全包"] },
 ];
-
-const ADMIN_PWD = "admin888";
-const STORAGE_KEY = "ch_v5";
 
 // ═══════════════════════════════════════════
 // STORAGE
 // ═══════════════════════════════════════════
-function loadData() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-  catch(e) { return {}; }
-}
-function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
-function getCourses() { const d = loadData(); return d.prices || DEFAULT_COURSES; }
-function getOrders() { const d = loadData(); return d.orders || []; }
-function getUserQR() { const d = loadData(); return d.paymentQR || ""; }
+function loadData(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY))||{}; }catch(e){ return{}; } }
+function saveData(d){ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+function getCourses(){ const d=loadData(); return d.prices||DEFAULT_COURSES; }
+function getOrders(){ const d=loadData(); return d.orders||[]; }
+function getUserQR(){ const d=loadData(); return d.paymentQR||""; }
 
 // ═══════════════════════════════════════════
 // NAVIGATION
 // ═══════════════════════════════════════════
-let activeCat = "all";
-let adminTab = "orders";
-let selectedCheckItems = {};
+let activeCat="all", adminTab="orders", selectedCheckItems={}, checkedCourseData=null;
 
-function showPage(name, data) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  const page = document.getElementById("page-" + name);
-  if (page) page.classList.add("active");
-  window._pageData = data;
-  if (name === "home") renderCourses();
-  if (name === "order") renderOrder();
-  if (name === "course-select") renderCourseSelect();
-  if (name === "orders") renderMyOrders();
-  if (name === "admin") renderAdmin();
-  window.scrollTo(0, 0);
+function showPage(name, data){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  const pg=document.getElementById("page-"+name);
+  if(pg) pg.classList.add("active");
+  window._pageData=data;
+  if(name==="home") renderCourses();
+  if(name==="order") renderOrder();
+  if(name==="orders") renderMyOrders();
+  if(name==="admin") renderAdmin();
+  window.scrollTo(0,0);
 }
 
 // ═══════════════════════════════════════════
 // HOME
 // ═══════════════════════════════════════════
-function renderCourses() {
-  const courses = getCourses();
-  const kw = (document.getElementById("searchInput")?.value || "").toLowerCase();
-  let list = courses;
-  if (activeCat !== "all") list = list.filter(c => c.cat === activeCat);
-  if (kw) list = list.filter(c => c.name.toLowerCase().includes(kw) || c.desc.toLowerCase().includes(kw) || c.platform.toLowerCase().includes(kw));
-
-  document.getElementById("courseGrid").innerHTML = list.map(c => `
-    <a class="course-card" href="javascript:void(0)" onclick="showPage('order', ${JSON.stringify(c).replace(/"/g, '&quot;').replace(/'/g, '&#39;')})">
+function renderCourses(){
+  const courses=getCourses();
+  const kw=(document.getElementById("searchInput")?.value||"").toLowerCase();
+  let list=courses;
+  if(activeCat!=="all") list=list.filter(c=>c.cat===activeCat);
+  if(kw) list=list.filter(c=>c.name.toLowerCase().includes(kw)||c.desc.toLowerCase().includes(kw)||c.platform.toLowerCase().includes(kw));
+  document.getElementById("courseGrid").innerHTML=list.map(c=>`
+    <a class="course-card" href="javascript:void(0)" onclick="showPage('order',${JSON.stringify(c).replace(/"/g,'&quot;').replace(/'/g,'&#39;')})">
       <div class="logo" style="background:${c.bg}">${c.logo}</div>
       <div class="info">
-        <div class="name">${c.name} ${c.tag ? '<span class="tag '+c.tag+'">'+c.tagText+'</span>' : ''}</div>
+        <div class="name">${c.name} ${c.tag?'<span class="tag '+c.tag+'">'+c.tagText+'</span>':''}</div>
         <div class="desc">${c.desc}</div>
       </div>
-      <div class="right">
-        <div class="price"><span class="u">¥</span>${c.price.toFixed(1)}</div>
-      </div>
+      <div class="right"><div class="price"><span class="u">¥</span>${c.price.toFixed(1)}</div></div>
       <span class="arrow">›</span>
     </a>
   `).join("");
 }
 
-function filterCat(cat, btn) {
-  activeCat = cat;
-  document.querySelectorAll("#catBar .cat").forEach(b => b.classList.remove("active"));
+function filterCat(cat,btn){
+  activeCat=cat;
+  document.querySelectorAll("#catBar .cat").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
   renderCourses();
 }
 
 // ═══════════════════════════════════════════
-// ORDER STEP 1
+// ORDER PAGE
 // ═══════════════════════════════════════════
-function renderOrder() {
-  const c = window._pageData;
-  if (!c) return;
-  document.getElementById("orderCourseInfo").innerHTML = `
+function renderOrder(){
+  const c=window._pageData;
+  if(!c) return;
+  document.getElementById("orderCourseInfo").innerHTML=`
     <div style="display:flex;align-items:center;gap:10px;">
-      <div style="width:42px;height:42px;border-radius:10px;background:${c.bg};display:flex;align-items:center;justify-content:center;font-size:20px;">${c.logo}</div>
-      <div>
-        <h3>${c.name}</h3>
-        <p style="color:var(--sub);font-size:11px;">${c.platform}平台 · ¥${c.price.toFixed(1)}/单</p>
-      </div>
+      <div style="width:40px;height:40px;border-radius:10px;background:${c.bg};display:flex;align-items:center;justify-content:center;font-size:18px;">${c.logo}</div>
+      <div><h3>${c.name}</h3><p style="color:var(--sub);font-size:11px;">${c.platform}平台 · ¥${c.price.toFixed(1)}/项</p></div>
     </div>
   `;
-  // Reset fields
-  document.getElementById("orderSchool").value = "";
-  document.getElementById("orderAccount").value = "";
-  document.getElementById("orderPassword").value = "";
+  document.getElementById("orderSchool").value="";
+  document.getElementById("orderAccount").value="";
+  document.getElementById("orderPassword").value="";
+  document.getElementById("checkResultArea").classList.add("hidden");
+  document.getElementById("checkLoading").classList.add("hidden");
+  document.getElementById("checkResultArea").innerHTML="";
+  document.getElementById("courseChecklistWrap").classList.add("hidden");
+  document.getElementById("courseChecklistWrap").innerHTML="";
+  document.getElementById("paySection").classList.add("hidden");
+  document.getElementById("btnCheckCourse").classList.remove("hidden");
+  selectedCheckItems={};
+  checkedCourseData=null;
+  const qr=getUserQR();
+  const qi=document.getElementById("paymentQR");
+  if(qr){qi.src=qr;qi.style.display="";}else{qi.style.display="none";}
 }
 
 // ═══════════════════════════════════════════
-// ORDER STEP 2: COURSE SELECT
+// CHECK COURSE — 查课
 // ═══════════════════════════════════════════
-function goToCourseSelect() {
-  const school = document.getElementById("orderSchool").value.trim();
-  const account = document.getElementById("orderAccount").value.trim();
-  const password = document.getElementById("orderPassword").value.trim();
-  if (!school || !account || !password) { toast("请填写完整信息"); return; }
-  // Store in page data
-  window._pageData._school = school;
-  window._pageData._account = account;
-  window._pageData._password = password;
-  showPage("course-select", window._pageData);
+async function checkCourse(){
+  const c=window._pageData;
+  if(!c) return;
+  const school=document.getElementById("orderSchool").value.trim();
+  const account=document.getElementById("orderAccount").value.trim();
+  const password=document.getElementById("orderPassword").value.trim();
+  if(!school||!account||!password){ toast("请填写学校、账号和密码"); return; }
+
+  const btn=document.getElementById("btnCheckCourse");
+  btn.classList.add("hidden");
+  document.getElementById("checkResultArea").classList.add("hidden");
+  document.getElementById("checkLoading").classList.remove("hidden");
+  document.getElementById("courseChecklistWrap").classList.add("hidden");
+  document.getElementById("paySection").classList.add("hidden");
+
+  try {
+    // Call proxy → kx API via CORS proxy
+    const resp=await fetch(PROXY_URL+"/api/proxy",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        endpoint:"/api/v2/checkcourses/get",
+        data:{cid:parseInt(c.cid)||6721, school, account:account, pass:password}
+      })
+    });
+    const result=await resp.json();
+    document.getElementById("checkLoading").classList.add("hidden");
+
+    if(result.code===1 && result.data){
+      // Success: show course list
+      checkedCourseData=result.data;
+      renderCheckedCourses(result.data, c);
+    } else {
+      // Show error
+      let errMsg=result.msg||"查询失败，请检查账号密码是否正确";
+      document.getElementById("checkResultArea").classList.remove("hidden");
+      document.getElementById("checkResultArea").innerHTML=`
+        <div class="err-msg">❌ ${errMsg}</div>
+        <p style="font-size:11px;color:var(--sub);">请检查账号密码后重试，或联系客服</p>
+      `;
+      btn.classList.remove("hidden");
+    }
+  } catch(e){
+    document.getElementById("checkLoading").classList.add("hidden");
+    // Fallback: show manual course selection
+    document.getElementById("checkResultArea").classList.remove("hidden");
+    document.getElementById("checkResultArea").innerHTML=`
+      <div class="notice">⚠️ 自动查课暂时不可用（${e.message}），请手动选择课程</div>
+    `;
+    showManualCourseSelect(c);
+  }
 }
 
-function renderCourseSelect() {
-  const c = window._pageData;
-  if (!c) return;
-  selectedCheckItems = {};
-  const items = c.checkItems || [c.platform + "全包"];
-  document.getElementById("courseChecklist").innerHTML = items.map((item, i) => `
-    <div class="check-item" id="checkitem_${i}" onclick="toggleCheck(${i})">
-      <input type="checkbox" id="check_${i}" onchange="toggleCheck(${i})">
-      <div class="ci">
-        <div class="cn">${item}</div>
-        <div class="cd">${c.platform}平台 · 此项 ¥${c.price.toFixed(1)}</div>
-      </div>
+function renderCheckedCourses(courseData, scriptInfo){
+  document.getElementById("courseChecklistWrap").classList.remove("hidden");
+  document.getElementById("courseChecklistWrap").innerHTML=`
+    <div class="order-card"><h3>📋 查询结果</h3><p style="color:var(--sub);font-size:11px;">以下是从平台查询到的课程，请勾选需要代刷的课程</p></div>
+    <div style="margin-bottom:8px;display:flex;gap:6px;">
+      <button class="btn btn-sm btn-outline" onclick="selectAll()">全选</button>
+      <button class="btn btn-sm btn-outline" onclick="deselectAll()">取消</button>
     </div>
-  `).join("");
-  updateTotal();
-  const qr = getUserQR();
-  const qrImg = document.getElementById("paymentQR");
-  if (qr) { qrImg.src = qr; qrImg.style.display = ""; }
-  else { qrImg.style.display = "none"; }
-  document.getElementById("orderScreenshot").value = "";
-}
-
-function toggleCheck(i) {
-  const cb = document.getElementById("check_" + i);
-  cb.checked = !cb.checked;
-  const el = document.getElementById("checkitem_" + i);
-  if (cb.checked) { el.classList.add("checked"); selectedCheckItems[i] = true; }
-  else { el.classList.remove("checked"); delete selectedCheckItems[i]; }
-  updateTotal();
-}
-
-function updateTotal() {
-  const c = window._pageData;
-  const count = Object.keys(selectedCheckItems).length || 1;
-  const total = count * (c ? c.price : 0);
-  document.getElementById("orderTotalPrice").textContent = "¥" + total.toFixed(1) + "（" + count + "项）";
-}
-
-function selectAll() {
-  const c = window._pageData;
-  if (!c) return;
-  const items = c.checkItems || [];
-  for (let i = 0; i < items.length; i++) {
-    selectedCheckItems[i] = true;
-    const cb = document.getElementById("check_" + i);
-    const el = document.getElementById("checkitem_" + i);
-    if (cb) cb.checked = true;
-    if (el) el.classList.add("checked");
+    <div class="course-checklist" id="courseChecklist"></div>
+  `;
+  const list=document.getElementById("courseChecklist");
+  if(Array.isArray(courseData)){
+    courseData.forEach((item,i)=>{
+      const name=item.name||item.title||item.course_name||("课程"+(i+1));
+      const desc=item.desc||item.info||"";
+      list.innerHTML+=`
+        <div class="check-item" id="checkitem_${i}" onclick="toggleCheck(${i})">
+          <input type="checkbox" id="check_${i}" onchange="toggleCheck(${i})">
+          <div class="ci"><div class="cn">${name}</div>${desc?`<div class="cd">${desc}</div>`:""}</div>
+        </div>
+      `;
+    });
   }
+  document.getElementById("paySection").classList.remove("hidden");
   updateTotal();
 }
 
-function deselectAll() {
-  const c = window._pageData;
-  if (!c) return;
-  const items = c.checkItems || [];
-  for (let i = 0; i < items.length; i++) {
-    delete selectedCheckItems[i];
-    const cb = document.getElementById("check_" + i);
-    const el = document.getElementById("checkitem_" + i);
-    if (cb) cb.checked = false;
-    if (el) el.classList.remove("checked");
-  }
+function showManualCourseSelect(c){
+  // When API fails, show the script's default checkItems
+  document.getElementById("courseChecklistWrap").classList.remove("hidden");
+  const items=c.checkItems||[c.platform+"全包"];
+  document.getElementById("courseChecklistWrap").innerHTML=`
+    <div class="order-card"><h3>📋 手动选择课程</h3><p style="color:var(--sub);font-size:11px;">请根据你的平台账号，勾选需要代刷的项目</p></div>
+    <div style="margin-bottom:8px;display:flex;gap:6px;">
+      <button class="btn btn-sm btn-outline" onclick="selectAll()">全选</button>
+      <button class="btn btn-sm btn-outline" onclick="deselectAll()">取消</button>
+    </div>
+    <div class="course-checklist" id="courseChecklist"></div>
+  `;
+  const list=document.getElementById("courseChecklist");
+  items.forEach((item,i)=>{
+    list.innerHTML+=`
+      <div class="check-item" id="checkitem_${i}" onclick="toggleCheck(${i})">
+        <input type="checkbox" id="check_${i}" onchange="toggleCheck(${i})">
+        <div class="ci"><div class="cn">${item}</div><div class="cd">${c.platform}平台 · ¥${c.price.toFixed(1)}</div></div>
+      </div>
+    `;
+  });
+  document.getElementById("paySection").classList.remove("hidden");
   updateTotal();
+}
+
+function toggleCheck(i){
+  const cb=document.getElementById("check_"+i);
+  cb.checked=!cb.checked;
+  const el=document.getElementById("checkitem_"+i);
+  if(cb.checked){el.classList.add("checked");selectedCheckItems[i]=true;}
+  else{el.classList.remove("checked");delete selectedCheckItems[i];}
+  updateTotal();
+}
+
+function selectAll(){
+  const items=document.querySelectorAll("#courseChecklist .check-item");
+  items.forEach((el,i)=>{selectedCheckItems[i]=true;el.classList.add("checked");const cb=document.getElementById("check_"+i);if(cb)cb.checked=true;});
+  updateTotal();
+}
+
+function deselectAll(){
+  const items=document.querySelectorAll("#courseChecklist .check-item");
+  items.forEach((el,i)=>{delete selectedCheckItems[i];el.classList.remove("checked");const cb=document.getElementById("check_"+i);if(cb)cb.checked=false;});
+  updateTotal();
+}
+
+function updateTotal(){
+  const c=window._pageData;
+  if(!c) return;
+  const count=Object.keys(selectedCheckItems).length||1;
+  const basePrice=c.price;
+  const total=count*basePrice*PRICE_MULTIPLIER;
+  document.getElementById("orderTotalPrice").textContent="¥"+total.toFixed(1)+"（"+count+"项 × ¥"+(basePrice*PRICE_MULTIPLIER).toFixed(1)+"）";
 }
 
 // ═══════════════════════════════════════════
 // SUBMIT ORDER
 // ═══════════════════════════════════════════
-function submitFullOrder() {
-  const c = window._pageData;
-  if (!c) return;
-  if (Object.keys(selectedCheckItems).length === 0) { toast("请至少选择一项课程"); return; }
+function submitFullOrder(){
+  const c=window._pageData;
+  if(!c) return;
+  if(Object.keys(selectedCheckItems).length===0){toast("请至少选择一项");return;}
 
-  const items = c.checkItems || [c.platform + "全包"];
-  const selected = Object.keys(selectedCheckItems).map(i => items[parseInt(i)]);
-  const count = selected.length;
-  const total = count * c.price;
-  const screenshotFile = document.getElementById("orderScreenshot").files[0];
+  let selectedNames=[];
+  const checkItems=document.querySelectorAll("#courseChecklist .check-item");
+  checkItems.forEach(el=>{const cn=el.querySelector(".cn");if(cn)selectedNames.push(cn.textContent);});
 
-  const order = {
-    id: Date.now().toString(36),
-    course: c.name,
-    courseId: c.id,
-    platform: c.platform,
-    price: c.price,
-    count,
-    total,
-    school: c._school,
-    account: c._account,
-    password: c._password,
-    selectedCourses: selected,
-    status: "pending",
-    createdAt: new Date().toLocaleString(),
+  const count=Object.keys(selectedCheckItems).length;
+  const total=count*c.price*PRICE_MULTIPLIER;
+  const screenshotFile=document.getElementById("orderScreenshot").files[0];
+
+  const order={
+    id:Date.now().toString(36),
+    course:c.name,platform:c.platform,price:c.price,multiplier:PRICE_MULTIPLIER,
+    count,total,
+    school:document.getElementById("orderSchool").value.trim(),
+    account:document.getElementById("orderAccount").value.trim(),
+    password:document.getElementById("orderPassword").value.trim(),
+    selectedCourses:selectedNames,
+    status:"pending",
+    createdAt:new Date().toLocaleString(),
   };
 
-  const data = loadData();
-  const orders = data.orders || [];
+  const data=loadData();
+  const orders=data.orders||[];
 
-  function finalize(orderData) {
-    orders.unshift(orderData);
-    data.orders = orders;
-    saveData(data);
-    // Copy order info to clipboard for admin
-    const info = `【新订单】${orderData.course}\n平台:${orderData.platform}\n学校:${orderData.school}\n账号:${orderData.account}\n密码:${orderData.password}\n已选课程:${orderData.selectedCourses.join('、')}\n数量:${orderData.count}项 · 金额:¥${orderData.total.toFixed(1)}`;
+  function finalize(od){
+    orders.unshift(od);data.orders=orders;saveData(data);
+    const info=`【新订单】${od.course}\n学校:${od.school}\n账号:${od.account}\n密码:${od.password}\n课程:${od.selectedCourses.join('、')}\n数量:${od.count}项·金额:¥${od.total.toFixed(1)}`;
     copyToClipboard(info);
     toast("订单提交成功！信息已复制");
-    setTimeout(() => showPage("home"), 2000);
+    setTimeout(()=>showPage("home"),2000);
   }
 
-  if (screenshotFile) {
-    const reader = new FileReader();
-    reader.onload = function(e) { order.screenshot = e.target.result; finalize(order); };
+  if(screenshotFile){
+    const reader=new FileReader();
+    reader.onload=function(e){order.screenshot=e.target.result;finalize(order);};
     reader.readAsDataURL(screenshotFile);
-  } else {
-    finalize(order);
-  }
+  }else{finalize(order);}
 }
 
 // ═══════════════════════════════════════════
 // MY ORDERS
 // ═══════════════════════════════════════════
-function renderMyOrders() {
-  const orders = getOrders();
-  const div = document.getElementById("myOrdersList");
-  if (orders.length === 0) {
-    div.innerHTML = '<p style="color:var(--sub);text-align:center;padding:30px;">暂无订单</p>';
-    return;
-  }
-  div.innerHTML = orders.slice(0, 30).map(o => `
+function renderMyOrders(){
+  const orders=getOrders();
+  const div=document.getElementById("myOrdersList");
+  if(orders.length===0){div.innerHTML='<p style="color:var(--sub);text-align:center;padding:30px;">暂无订单</p>';return;}
+  div.innerHTML=orders.slice(0,30).map(o=>`
     <div class="order-item">
       <div><b>${o.course}</b> <span class="status ${o.status}">${o.status==="pending"?"处理中":"已完成"}</span></div>
-      <div style="font-size:12px;margin-top:2px;">${o.school} | ${o.account} | ${o.count||1}项 ¥${(o.total||o.price).toFixed(1)}</div>
-      ${o.selectedCourses ? '<div style="font-size:11px;color:var(--sub);">课程:'+o.selectedCourses.join('、')+'</div>' : ''}
+      <div style="font-size:11px;">${o.school} | ${o.account} | ${o.count||1}项 ¥${(o.total||o.price).toFixed(1)}</div>
+      ${o.selectedCourses?'<div style="font-size:10px;color:var(--sub);">'+o.selectedCourses.join('、')+'</div>':''}
       <div class="meta">${o.createdAt}</div>
     </div>
   `).join("");
@@ -534,130 +569,103 @@ function renderMyOrders() {
 // ═══════════════════════════════════════════
 // ADMIN
 // ═══════════════════════════════════════════
-function adminLogin() {
-  if (document.getElementById("adminPassword").value === ADMIN_PWD) { showPage("admin"); toast("登录成功"); }
-  else { toast("密码错误"); }
+function adminLogin(){
+  if(document.getElementById("adminPassword").value===ADMIN_PWD){showPage("admin");toast("登录成功");}
+  else{toast("密码错误");}
 }
 
-function renderAdmin() {
-  const div = document.getElementById("adminContent");
-  const data = loadData();
-
-  if (adminTab === "orders") {
-    const orders = getOrders();
-    if (orders.length === 0) {
-      div.innerHTML = '<p style="color:var(--sub);text-align:center;padding:30px;">暂无订单</p>';
-    } else {
-      div.innerHTML = orders.map(o => `
+function renderAdmin(){
+  const div=document.getElementById("adminContent");
+  const data=loadData();
+  if(adminTab==="orders"){
+    const orders=getOrders();
+    if(orders.length===0){div.innerHTML='<p style="color:var(--sub);text-align:center;padding:30px;">暂无订单</p>';}
+    else{
+      div.innerHTML=orders.map(o=>`
         <div class="order-item">
           <div><b>${o.course}</b> - ¥${(o.total||o.price).toFixed(1)} <span class="status ${o.status}">${o.status==="pending"?"处理中":"已完成"}</span></div>
-          <div style="margin-top:3px;font-size:12px;">平台:${o.platform||'--'}｜学校:${o.school}｜账号:${o.account}｜密码:${o.password}</div>
-          ${o.selectedCourses ? '<div style="font-size:12px;color:var(--green);">勾选课程:'+o.selectedCourses.join('、')+'</div>' : ''}
+          <div style="margin-top:2px;font-size:11px;">平台:${o.platform||'--'}｜学校:${o.school}｜账号:${o.account}｜密码:${o.password}</div>
+          ${o.selectedCourses?'<div style="font-size:11px;color:var(--green);">课程:'+o.selectedCourses.join('、')+'</div>':''}
           <div class="meta">${o.createdAt}｜${o.count||1}项</div>
-          ${o.screenshot ? `<img src="${o.screenshot}" style="max-width:100px;margin-top:4px;border-radius:6px;">` : ""}
-          <div style="margin-top:6px;display:flex;gap:6px;">
-            <button class="btn btn-sm btn-green" onclick="kxOpen('${o.id}')">跳转kx下单</button>
-            ${o.status === "pending" ? `<button class="btn btn-sm btn-primary" onclick="markDone('${o.id}')">标记完成</button>` : ""}
+          ${o.screenshot?`<img src="${o.screenshot}" style="max-width:80px;margin-top:3px;border-radius:6px;">`:""}
+          <div style="margin-top:4px;display:flex;gap:4px;">
+            <button class="btn btn-sm btn-green" onclick="kxOpen('${o.id}')">跳kx下单</button>
+            ${o.status==="pending"?`<button class="btn btn-sm btn-primary" onclick="markDone('${o.id}')">完成</button>`:""}
           </div>
         </div>
       `).join("");
     }
   }
-
-  if (adminTab === "prices") {
-    const courses = getCourses();
-    div.innerHTML = courses.map((c, i) => `
+  if(adminTab==="prices"){
+    const courses=getCourses();
+    div.innerHTML=courses.map((c,i)=>`
       <div class="order-item">
         <div style="display:flex;align-items:center;justify-content:space-between;">
           <span style="font-size:11px;"><b>${c.logo} ${c.name}</b></span>
           <div class="inline-row">
-            <span style="font-size:11px;color:var(--sub);">¥</span>
-            <input type="number" id="price_${i}" value="${c.price}" style="width:65px;padding:5px;border-radius:6px;border:1px solid #444;background:var(--card);color:var(--text);text-align:center;" step="0.1">
+            <span style="font-size:10px;color:var(--sub);">¥</span>
+            <input type="number" id="price_${i}" value="${c.price}" style="width:60px;padding:5px;border-radius:6px;border:1px solid #444;background:var(--card);color:var(--text);text-align:center;" step="0.1">
             <button class="btn btn-sm btn-green" onclick="updatePrice(${i})">保存</button>
           </div>
         </div>
       </div>
-    `).join("") + '<p style="color:var(--sub);font-size:10px;margin-top:6px;">价格修改仅当前浏览器生效，永久修改需改代码</p>';
+    `).join("")+'<p style="color:var(--sub);font-size:10px;margin-top:4px;">当前倍率：${PRICE_MULTIPLIER}x，客户支付价 = 单价 × ${PRICE_MULTIPLIER}</p>';
   }
-
-  if (adminTab === "qrcode") {
-    const qr = getUserQR();
-    div.innerHTML = `
-      <p style="font-size:13px;color:var(--sub);margin-bottom:8px;">上传收款码（微信/支付宝），客户下单时显示</p>
-      ${qr ? `<img src="${qr}" style="max-width:180px;border-radius:10px;margin-bottom:8px;display:block;">` : "<p style='color:var(--sub);'>未设置</p>"}
-      <input type="file" id="qrcodeFile" accept="image/*" style="margin-bottom:8px;">
-      <button class="btn btn-primary" onclick="uploadQR()">上传收款码</button>
+  if(adminTab==="qrcode"){
+    const qr=getUserQR();
+    div.innerHTML=`
+      <p style="font-size:12px;color:var(--sub);margin-bottom:6px;">上传收款码</p>
+      ${qr?`<img src="${qr}" style="max-width:160px;border-radius:10px;margin-bottom:6px;display:block;">`:"<p style='color:var(--sub);'>未设置</p>"}
+      <input type="file" id="qrcodeFile" accept="image/*" style="margin-bottom:6px;">
+      <button class="btn btn-primary" onclick="uploadQR()">上传</button>
     `;
   }
 }
 
-function markDone(id) {
-  const data = loadData();
-  const orders = data.orders || [];
-  const o = orders.find(x => x.id === id);
-  if (o) { o.status = "done"; data.orders = orders; saveData(data); renderAdmin(); toast("已标记"); }
+function markDone(id){
+  const data=loadData();const orders=data.orders||[];
+  const o=orders.find(x=>x.id===id);
+  if(o){o.status="done";data.orders=orders;saveData(data);renderAdmin();toast("已标记");}
 }
 
-function updatePrice(i) {
-  const val = parseFloat(document.getElementById("price_" + i).value);
-  if (isNaN(val) || val < 0) { toast("无效"); return; }
-  const data = loadData();
-  if (!data.prices) data.prices = [...DEFAULT_COURSES];
-  data.prices[i].price = val;
-  saveData(data);
-  toast("价格已更新");
+function updatePrice(i){
+  const val=parseFloat(document.getElementById("price_"+i).value);
+  if(isNaN(val)||val<0){toast("无效");return;}
+  const data=loadData();
+  if(!data.prices)data.prices=[...DEFAULT_COURSES];
+  data.prices[i].price=val;saveData(data);toast("已更新");
 }
 
-function uploadQR() {
-  const file = document.getElementById("qrcodeFile").files[0];
-  if (!file) { toast("请选择图片"); return; }
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const data = loadData();
-    data.paymentQR = e.target.result;
-    saveData(data);
-    toast("收款码已更新");
-    renderAdmin();
-  };
+function uploadQR(){
+  const file=document.getElementById("qrcodeFile").files[0];
+  if(!file){toast("请选择");return;}
+  const reader=new FileReader();
+  reader.onload=function(e){const data=loadData();data.paymentQR=e.target.result;saveData(data);toast("已更新");renderAdmin();};
   reader.readAsDataURL(file);
 }
 
-// ═══════════════════════════════════════════
-// KX PLATFORM BRIDGE
-// ═══════════════════════════════════════════
-function kxOpen(orderId) {
-  const data = loadData();
-  const orders = data.orders || [];
-  const o = orders.find(x => x.id === orderId);
-  if (!o) return;
-  // Open kx platform in new tab and copy order info
-  const info = `学校:${o.school}\n账号:${o.account}\n密码:${o.password}\n需要:${(o.selectedCourses||['全包']).join('、')}`;
+function kxOpen(orderId){
+  const data=loadData();const orders=data.orders||[];
+  const o=orders.find(x=>x.id===orderId);
+  if(!o) return;
+  const info=`学校:${o.school}\n账号:${o.account}\n密码:${o.password}\n课程:${(o.selectedCourses||['全包']).join('、')}`;
   copyToClipboard(info);
-  window.open("https://kx.nopoliceman.help/add2", "_blank");
-  toast("已复制订单信息，在kx页面粘贴使用");
+  window.open("https://kx.nopoliceman.help/add2","_blank");
+  toast("已复制信息，在kx粘贴使用");
 }
 
 // ═══════════════════════════════════════════
 // UTILS
 // ═══════════════════════════════════════════
-function toast(msg) {
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
+function toast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.classList.add("show");
   clearTimeout(t._tid);
-  t._tid = setTimeout(() => t.classList.remove("show"), 2500);
+  t._tid=setTimeout(()=>t.classList.remove("show"),2500);
 }
 
-function copyToClipboard(text) {
-  try {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.style.position = "fixed"; ta.style.left = "-9999px";
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    document.body.removeChild(ta);
-  } catch(e) {}
+function copyToClipboard(text){
+  try{const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.left="-9999px";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(e){}
 }
 
 renderCourses();
