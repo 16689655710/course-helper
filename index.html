@@ -67,6 +67,22 @@
 
   .hidden { display: none !important; }
 
+  /* Bottom nav */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 460px;
+    background: var(--card); border-top: 1px solid #222;
+    display: flex; justify-content: space-around; padding: 10px 0 14px;
+    z-index: 100;
+  }
+  .bottom-nav .nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    font-size: 10px; color: var(--sub); cursor: pointer; text-decoration: none;
+    background: none; border: none; font-family: inherit;
+  }
+  .bottom-nav .nav-item .nav-icon { font-size: 20px; }
+  .bottom-nav .nav-item.active { color: var(--accent); }
+
   /* ─── ORDER PAGE ─── */
   .back { color: var(--accent); font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; margin-bottom: 12px; }
   .order-card { background: var(--card); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
@@ -142,10 +158,9 @@
       <p>选择课程 → 提交账号 → 支付 → 全包通过</p>
     </div>
     <div class="topbar">
-      <span class="balance">余额：<b id="homeBalance">¥0.00</b></span>
+      <span class="balance">💰 余额：<b id="homeBalance">¥0.00</b></span>
       <span>
-        <a href="#" onclick="showPage('recharge')">充值</a> &nbsp;
-        <a href="#" onclick="showPage('admin-login')" style="font-size:11px;color:#555;">管理</a>
+        <a href="#" onclick="showPage('recharge')" style="background:var(--gold);color:#000;padding:6px 14px;border-radius:14px;font-size:12px;font-weight:600;">充值</a>
       </span>
     </div>
     <div class="stats">
@@ -167,6 +182,20 @@
     <div class="section-title">全部课程 <span style="color:var(--sub);font-size:12px;" id="countBadge"></span></div>
     <div class="course-grid" id="courseGrid"></div>
     <div class="footer">代理刷课 · 安全可靠 · 不过退款</div>
+    <div class="bottom-nav">
+      <button class="nav-item active" onclick="showPage('home')">
+        <span class="nav-icon">🏠</span>首页
+      </button>
+      <button class="nav-item" onclick="showPage('orders')">
+        <span class="nav-icon">📋</span>我的订单
+      </button>
+      <button class="nav-item" onclick="showPage('recharge')">
+        <span class="nav-icon">💳</span>充值
+      </button>
+      <button class="nav-item" onclick="showPage('withdraw')">
+        <span class="nav-icon">💸</span>提现
+      </button>
+    </div>
   </div>
 
   <!-- ==================== ORDER PAGE ==================== -->
