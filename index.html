@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>网课代刷</title>
+<style>
+  :root {
+    --bg: #0f0f1a;
+    --card: #1a1a2e;
+    --accent: #6c63ff;
+    --accent2: #ff6584;
+    --text: #e0e0e0;
+    --sub: #999;
+    --gold: #ffb800;
+    --green: #4ade80;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .app {
+    width: 100%;
+    max-width: 420px;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 32px 16px 24px;
+  }
+  .header .icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 16px;
+    margin: 0 auto 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .header h1 { font-size: 20px; font-weight: 700; }
+  .header p { font-size: 13px; color: var(--sub); margin-top: 6px; }
+
+  /* Stats */
+  .stats {
+    display: flex; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat {
+    flex: 1;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .stat .num { font-size: 22px; font-weight: 700; color: var(--accent); }
+  .stat .label { font-size: 11px; color: var(--sub); margin-top: 2px; }
+
+  /* Search */
+  .search {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .search input {
+    flex: 1;
+    background: none; border: none; outline: none;
+    color: var(--text); font-size: 15px;
+  }
+  .search input::placeholder { color: var(--sub); }
+  .search .s-icon { font-size: 18px; }
+
+  /* Categories */
+  .cats {
+    display: flex; gap: 8px;
+    margin-bottom: 18px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .cat {
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+    background: var(--card);
+    color: var(--sub);
+    cursor: pointer;
+    transition: .2s;
+    border: none;
+  }
+  .cat.active { background: var(--accent); color: #fff; }
+
+  /* Course list */
+  .section-title {
+    font-size: 16px; font-weight: 600;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .badge {
+    background: var(--accent);
+    font-size: 11px; padding: 2px 8px; border-radius: 10px;
+  }
+
+  .course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 40px;
+  }
+
+  .course-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+  .course-card:active {
+    transform: scale(0.98);
+    background: #222240;
+  }
+  .course-card .logo {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .course-card .info { flex: 1; min-width: 0; }
+  .course-card .name { font-size: 15px; font-weight: 600; }
+  .course-card .desc { font-size: 12px; color: var(--sub); margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .course-card .right { text-align: right; flex-shrink: 0; }
+  .course-card .price { font-size: 20px; font-weight: 800; color: var(--gold); }
+  .course-card .price .unit { font-size: 12px; font-weight: 400; }
+  .course-card .tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-top: 2px;
+  }
+  .tag.hot { background: rgba(255,101,132,.2); color: var(--accent2); }
+  .tag.new { background: rgba(106,200,255,.2); color: #6ac8ff; }
+  .tag.fast { background: rgba(74,222,128,.2); color: var(--green); }
+
+  .arrow { color: var(--sub); font-size: 18px; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--sub);
+    font-size: 12px;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+    background: #333; color: #fff; padding: 10px 24px;
+    border-radius: 20px; font-size: 13px;
+    z-index: 99; opacity: 0; transition: opacity .3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Header -->
+  <div class="header">
+    <div class="icon">📚</div>
+    <h1>网课代刷平台</h1>
+    <p>点击课程即可跳转下单 · 安全可靠 · 全包通过</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="num">1280+</div>
+      <div class="label">已服务学员</div>
+    </div>
+    <div class="stat">
+      <div class="num">99.7%</div>
+      <div class="label">通过率</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="courseCount">12</div>
+      <div class="label">平台覆盖</div>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="search">
+    <span class="s-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="搜索课程平台..." oninput="filterCourses()">
+  </div>
+
+  <!-- Categories -->
+  <div class="cats" id="catBar">
+    <button class="cat active" onclick="filterCat('all', this)">全部</button>
+    <button class="cat" onclick="filterCat('mooc', this)">MOOC平台</button>
+    <button class="cat" onclick="filterCat('exam', this)">考试类</button>
+    <button class="cat" onclick="filterCat('english', this)">英语类</button>
+    <button class="cat" onclick="filterCat('other', this)">其他</button>
+  </div>
+
+  <!-- Course List -->
+  <div class="section-title">
+    全部课程 <span class="badge" id="countBadge">12</span>
+  </div>
+  <div class="course-list" id="courseList"></div>
+
+  <div class="footer">
+    点击任意课程自动跳转到对应刷课平台下单<br>
+    如有问题请联系客服
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== 在这里修改你的课程数据 ======
+const courses = [
+  {
+    name: "超星尔雅（学习通）",
+    desc: "支持章节/作业/考试全包",
+    logo: "📖",
+    logoBg: "#2b5f8a",
+    url: "https://你的超星尔雅刷课链接",
+    price: "9.9",
+    cat: "mooc",
+    tag: "hot",
+    tagText: "热门",
+  },
+  {
+    name: "智慧树（知到）",
+    desc: "全自动刷课+考试+期末",
+    logo: "🌳",
+    logoBg: "#2d8a4e",
+    url: "https://你的智慧树刷课链接",
+    price: "9.9",
+    cat: "mooc",
+    tag: "hot",
+    tagText: "热门",
+  },
+  {
+    name: "中国大学MOOC",
+    desc: "名校课程代刷，含单元测试",
+    logo: "🎓",
+    logoBg: "#c73e3e",
+    url: "https://你的中国大学MOOC刷课链接",
+    price: "12.9",
+    cat: "mooc",
+    tag: "",
+    tagText: "",
+  },
+  {
+    name: "U校园（Unipus）",
+    desc: "大学英语听说读写全包",
+    logo: "🏫",
+    logoBg: "#5c3e9e",
+    url: "https://你的U校园刷课链接",
+    price: "15.9",
+    cat: "english",
+    tag: "fast",
+    tagText: "秒刷",
+  },
+  {
+    name: "iSmart",
+    desc: "英语课程代刷，含听说训练",
+    logo: "💬",
+    logoBg: "#e85d30",
+    url: "https://你的iSmart刷课链接",
+    price: "13.9",
+    cat: "english",
+    tag: "",
+    tagText: "",
+  },
+  {
+    name: "学堂在线",
+    desc: "清华/北大等名校课程代刷",
+    logo: "🏛️",
+    logoBg: "#7b3e6b",
+    url: "https://你的学堂在线刷课链接",
+    price: "11.9",
+    cat: "mooc",
+    tag: "new",
+    tagText: "新品",
+  },
+  {
+    name: "优学院",
+    desc: "全自动代刷，含作业与考试",
+    logo: "📱",
+    logoBg: "#3e7b8a",
+    url: "https://你的优学院刷课链接",
+    price: "8.9",
+    cat: "mooc",
+    tag: "",
+    tagText: "",
+  },
+  {
+    name: "高校邦",
+    desc: "创新创业类课程代刷",
+    logo: "🏢",
+    logoBg: "#4a6fa5",
+    url: "https://你的高校邦刷课链接",
+    price: "10.9",
+    cat: "mooc",
+    tag: "",
+    tagText: "",
+  },
+  {
+    name: "青书学堂",
+    desc: "成教/网教课程代刷",
+    logo: "📘",
+    logoBg: "#3e9e6b",
+    url: "https://你的青书学堂刷课链接",
+    price: "11.9",
+    cat: "other",
+    tag: "",
+    tagText: "",
+  },
+  {
+    name: "形势与政策",
+    desc: "专题课程代刷，快速完成",
+    logo: "📰",
+    logoBg: "#b85c3e",
+    url: "https://你的形势与政策刷课链接",
+    price: "6.9",
+    cat: "exam",
+    tag: "fast",
+    tagText: "秒刷",
+  },
+  {
+    name: "学习强国",
+    desc: "积分代刷，每日自动打卡",
+    logo: "🇨🇳",
+    logoBg: "#cc3030",
+    url: "https://你的学习强国刷课链接",
+    price: "19.9",
+    cat: "exam",
+    tag: "hot",
+    tagText: "热门",
+  },
+  {
+    name: "FIF口语训练",
+    desc: "英语口语AI训练代刷",
+    logo: "🎙️",
+    logoBg: "#6b4e9e",
+    url: "https://你的FIF口语刷课链接",
+    price: "14.9",
+    cat: "english",
+    tag: "",
+    tagText: "",
+  },
+];
+
+let activeCat = "all";
+
+// ====== 渲染课程列表 ======
+function renderCourses(list) {
+  const container = document.getElementById("courseList");
+  container.innerHTML = list.map(c => `
+    <a class="course-card" href="${c.url}" target="_blank" onclick="showToast('正在跳转到 ${c.name} ...')">
+      <div class="logo" style="background:${c.logoBg}">${c.logo}</div>
+      <div class="info">
+        <div class="name">${c.name}</div>
+        <div class="desc">${c.desc}</div>
+      </div>
+      <div class="right">
+        <div class="price"><span class="unit">¥</span>${c.price}</div>
+        ${c.tag ? `<div class="tag ${c.tag}">${c.tagText}</div>` : ""}
+      </div>
+      <span class="arrow">›</span>
+    </a>
+  `).join("");
+
+  document.getElementById("courseCount").textContent = list.length;
+  document.getElementById("countBadge").textContent = list.length;
+}
+
+// ====== 筛选 ======
+function filterCat(cat, btn) {
+  activeCat = cat;
+  document.querySelectorAll("#catBar .cat").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  applyFilters();
+}
+
+function filterCourses() {
+  applyFilters();
+}
+
+function applyFilters() {
+  const keyword = document.getElementById("searchInput").value.toLowerCase();
+  let list = courses;
+  if (activeCat !== "all") list = list.filter(c => c.cat === activeCat);
+  if (keyword) list = list.filter(c => c.name.toLowerCase().includes(keyword) || c.desc.toLowerCase().includes(keyword));
+  renderCourses(list);
+}
+
+// ====== Toast ======
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.remove("show"), 1500);
+}
+
+// ====== Init ======
+renderCourses(courses);
+</script>
+</body>
+</html>
