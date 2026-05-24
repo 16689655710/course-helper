@@ -286,7 +286,14 @@ function SO(){
   const file=document.getElementById("orderScreenshot").files[0];
   const order={id:Date.now().toString(36),course:c.name,platform:c.kx,price:c.price,perPrice:c.price,count:cnt,total:cnt*c.price,account:a,password:p,courses:sel,status:"pending",createdAt:new Date().toLocaleString()};
   const data=ld();const orders=data.orders||[];
-  function fin(o){orders.unshift(o);data.orders=orders;sv(data);T("订单提交成功！");setTimeout(()=>SP("home"),2000);}
+  function fin(o){
+    orders.unshift(o);data.orders=orders;sv(data);
+    T("订单已提交，正在自动下单...");
+    // 自动触发kx下单
+    fetch(`${AP}/api/place-order`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({account:a,password:p,platform:c.kx,courses:sel})})
+      .then(r=>r.json()).then(d=>{T(d.msg||"下单完成！请等待刷课结果");}).catch(e=>{T("下单请求已发送");});
+    setTimeout(()=>SP("home"),3000);
+  }
   if(file){const r=new FileReader();r.onload=function(e){order.screenshot=e.target.result;fin(order);};r.readAsDataURL(file);}else{fin(order);}
 }
 
