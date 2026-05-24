@@ -169,6 +169,20 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-Length',str(len(resp)))
             self.end_headers()
             self.wfile.write(resp)
+        elif self.path in ('/','/index.html'):
+            try:
+                with open(r'C:\Users\Administrator\Desktop\网课代刷\index.html','r',encoding='utf-8') as f:
+                    html=f.read()
+                # 替换API地址为当前serveo地址
+                resp=html.encode('utf-8')
+                self.send_response(200)
+                self.send_header('Content-Type','text/html;charset=utf-8')
+                self.send_header('Access-Control-Allow-Origin','*')
+                self.send_header('Content-Length',str(len(resp)))
+                self.end_headers()
+                self.wfile.write(resp)
+            except Exception as e:
+                self.send_response(500);self.end_headers()
         else:
             self.send_response(200)
             self.send_header('Content-Type','application/json')
