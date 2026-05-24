@@ -149,8 +149,8 @@ def do_check(platform, account, password):
 
 # 价格存储（服务端统一管理，所有人看到一致价格）
 _PRICES={
-    "U校园AI版":12.9,"U校园":12.9,"学习通":9.9,"智慧树":10.9,
-    "中国大学MOOC":9.9,"清华社英语":29.9,"长江雨课堂":10.9
+    "U校园AI版":1.13,"U校园":1.13,"学习通":0.45,"智慧树":0.37,
+    "中国大学MOOC":0.50,"清华社英语":2.82,"长江雨课堂":0.74
 }
 
 class Handler(http.server.BaseHTTPRequestHandler):
