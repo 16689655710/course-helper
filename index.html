@@ -142,7 +142,7 @@
 <script>
 const AP="https://every-poets-wear.loca.lt", AK="admin888", SK="ch_v11";
 
-// 课程数据 —— 1:1来自kx平台"我的收藏"
+// 课程数据
 const DC=[
   {kx:"U校园AI版", name:"PUP-U校园AI版 整本", desc:"客观题作答默认满分，主观题填标准答案，没开放单元开放后自动上号。时长默认教师设置的满分时长，未达满分重刷可增加，满分后重刷不再增加。支持自定义时长分数", logo:"🤖",bg:"#5c3e9e",price:12.9,tag:"rec",tagText:"推荐"},
   {kx:"U校园", name:"PUP-U校园 整本", desc:"作答默认满分，没开放单元开放后自动上号。时长默认教师设置的满分时长，未达满分重刷可增加。支持自定义分数、时长、周期、仅必修等参数", logo:"🏫",bg:"#5c3e9e",price:12.9},
@@ -153,13 +153,27 @@ const DC=[
   {kx:"长江雨课堂", name:"恐龙-长江雨课堂", desc:"包视频、讨论、作业、考试", logo:"📺",bg:"#4a6fa5",price:10.9},
 ];
 
-let SI={}, CC=[], AT="orders";
+let SI={}, CC=[], AT="orders", _serverPrices=null;
 
 function ld(){try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return{}}}
 function sv(d){localStorage.setItem(SK,JSON.stringify(d))}
-function GC(){const d=ld();return d.prices||DC}
 function GO(){const d=ld();return d.orders||[]}
 function GQ(){const d=ld();return d.paymentQR||""}
+
+// 从服务端获取价格（所有人看到一致价格）
+async function loadPrices(){
+  try{
+    const r=await fetch(`${AP}/api/prices`);
+    if(r.ok){_serverPrices=await r.json();}
+  }catch(e){}
+}
+function GC(){
+  const courses=DC.map(c=>({...c})); // 深拷贝
+  if(_serverPrices){
+    courses.forEach(c=>{if(_serverPrices[c.kx]!==undefined)c.price=_serverPrices[c.kx];});
+  }
+  return courses;
+}
 
 function SP(name,data){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
@@ -290,14 +304,14 @@ function RA(){
       ${o.status==="pending"?`<button class="btn btn-sm btn-primary" onclick="MD('${o.id}')">标记完成</button>`:""}
     </div>`).join("");}
   }
-  if(AT==="prices"){const cs=GC();div.innerHTML=cs.map((c,i)=>`<div class="order-item"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:11px;"><b>${c.logo} ${c.name}</b></span><div class="inline-row"><span style="font-size:10px;color:var(--sub);">¥</span><input type="number" id="p_${i}" value="${c.price}" style="width:60px;padding:5px;border-radius:6px;border:1px solid #444;background:var(--card);color:var(--text);text-align:center;" step="0.1"><button class="btn btn-sm btn-green" onclick="UP(${i})">保存</button></div></div></div>`).join("")+'<p style="color:var(--sub);font-size:10px;margin-top:4px;">客户支付=单价×课程数</p>';}
+  if(AT==="prices"){const cs=GC();div.innerHTML=cs.map((c,i)=>`<div class="order-item"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:11px;"><b>${c.logo} ${c.name}</b></span><div class="inline-row"><span style="font-size:10px;color:var(--sub);">¥</span><input type="number" id="p_${i}" value="${c.price}" style="width:60px;padding:5px;border-radius:6px;border:1px solid #444;background:var(--card);color:var(--text);text-align:center;" step="0.1"><button class="btn btn-sm btn-green" onclick="UP(${i})">保存</button></div></div></div>`).join("")+'<p style="color:var(--sub);font-size:10px;margin-top:4px;">修改后自动同步到服务端，所有人可见</p>';}
   if(AT==="qrcode"){const qr=GQ();div.innerHTML=`<p style="font-size:12px;color:var(--sub);margin-bottom:6px;">上传收款码</p>${qr?`<img src="${qr}" style="max-width:160px;border-radius:10px;margin-bottom:6px;display:block;">`:"<p style='color:var(--sub);'>未设置</p>"}<input type="file" id="qrFile" accept="image/*" style="margin-bottom:6px;"><button class="btn btn-primary" onclick="UQ()">上传</button>`;}
 }
 function MD(id){const data=ld();const orders=data.orders||[];const o=orders.find(x=>x.id===id);if(o){o.status="done";data.orders=orders;sv(data);RA();T("已标记");}}
-function UP(i){const v=parseFloat(document.getElementById("p_"+i).value);if(isNaN(v)||v<0){T("无效");return;}const data=ld();if(!data.prices)data.prices=[...DC];data.prices[i].price=v;sv(data);T("已更新");}
+async function UP(i){const v=parseFloat(document.getElementById("p_"+i).value);if(isNaN(v)||v<0){T("无效");return;}const cs=GC();cs[i].price=v;const priceData={};priceData[cs[i].kx]=v;try{await fetch(`${AP}/api/prices`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(priceData)});_serverPrices=cs[i].kx in (_serverPrices||{})?Object.assign(_serverPrices||{},priceData):priceData;T("价格已同步到服务端！");}catch(e){T("同步失败，请检查服务端");}}
 function UQ(){const f=document.getElementById("qrFile").files[0];if(!f){T("请选择");return;}const r=new FileReader();r.onload=function(e){const d=ld();d.paymentQR=e.target.result;sv(d);T("已更新");RA();};r.readAsDataURL(f);}
 function T(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove("show"),2500);}
-R();
+loadPrices().then(()=>R());
 </script>
 </body>
 </html>
