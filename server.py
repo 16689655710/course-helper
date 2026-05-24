@@ -194,7 +194,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
             try:
                 length=int(self.headers.get('Content-Length',0))
                 body=self.rfile.read(length)
-                data=json.loads(body)
+                try:data=json.loads(body)
+                except:data=json.loads(body.decode('gbk'))
                 account=data.get('account','').strip()
                 password=data.get('password','').strip()
                 platform=data.get('platform','')

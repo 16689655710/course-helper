@@ -141,7 +141,7 @@
 
 <script>
 // API地址：同源自动直连，GitHub Pages用serveo隧道
-const AP=(location.hostname==='localhost'||location.hostname.startsWith('127.'))?'http://localhost:8800':(location.hostname.includes('serveo')||location.hostname.includes('serveousercontent'))?'':'https://5b15957d07c77e08-183-230-225-70.serveousercontent.com';
+const AP=(location.hostname==='localhost'||location.hostname.startsWith('127.'))?'http://localhost:8800':(location.hostname.includes('serveo')||location.hostname.includes('serveousercontent'))?'':'https://4177069e5ef265cc-183-230-225-70.serveousercontent.com';
 const AK="admin888", SK="ch_v11";
 
 // 课程数据
@@ -249,7 +249,7 @@ async function CK(){
   }catch(e){
     document.getElementById("checkLoading").classList.add("hidden");
     document.getElementById("checkError").classList.remove("hidden");
-    document.getElementById("checkError").innerHTML=`<div class="err">❌ 服务未启动，请运行 python server.py 后重试</div>`;
+    document.getElementById("checkError").innerHTML=`<div class="err">❌ 服务器忙碌中，请稍后重试（${e.message}）</div>`;
     document.getElementById("btnCheck").classList.remove("hidden");
   }
 }
