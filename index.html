@@ -102,10 +102,16 @@
       <div class="card"><h3>📋 您的课程</h3><p style="color:var(--sub);font-size:11px;">请勾选需要代刷的课程</p></div>
       <div style="margin-bottom:6px;display:flex;gap:6px;"><button class="btn btn-sm btn-outline" onclick="SA()">全选</button><button class="btn btn-sm btn-outline" onclick="DA()">取消</button></div>
       <div class="course-checklist" id="courseChecklist"></div>
-      <div class="qr-section"><p style="color:var(--red);margin-bottom:4px;">支付金额</p><img id="paymentQR" src="" alt="收款码" onerror="this.style.display='none'" style="width:150px;height:150px;"><p><b id="orderTotalPrice" style="color:var(--gold);font-size:18px;"></b></p></div>
-      <div class="form-group"><label>支付截图</label><input type="file" id="orderScreenshot" accept="image/*" style="padding:8px;"></div>
-      <div class="notice">提交后24小时内处理完成，期间请勿登录账号</div>
-      <button class="btn btn-gold" onclick="SO()">确认支付并提交</button>
+      <div class="card" style="text-align:center;">
+        <h3>💳 微信扫码支付</h3>
+        <p style="font-size:22px;font-weight:800;color:var(--gold);margin:8px 0;" id="orderTotalPrice"></p>
+        <p style="font-size:12px;color:var(--sub);margin-bottom:10px;">请使用微信扫描下方二维码付款</p>
+        <img id="paymentQR" src="" alt="微信收款码" onerror="this.style.display='none'" style="width:180px;height:180px;border-radius:12px;border:2px solid #333;margin:0 auto;display:block;">
+        <p style="font-size:11px;color:var(--red);margin-top:8px;">⚠️ 付款时请备注您的账号，方便核对</p>
+      </div>
+      <div class="form-group"><label>📸 支付截图（必传）</label><input type="file" id="orderScreenshot" accept="image/*" style="padding:8px;"></div>
+      <div class="notice">支付后上传截图，客服核对后立即开始刷课。请不要在刷课期间登录账号。</div>
+      <button class="btn btn-gold" onclick="SO()">✅ 我已支付，确认提交</button>
     </div>
   </div>
 
