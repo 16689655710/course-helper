@@ -109,9 +109,9 @@
         <img id="paymentQR" src="" alt="微信收款码" onerror="this.style.display='none'" style="width:180px;height:180px;border-radius:12px;border:2px solid #333;margin:0 auto;display:block;">
         <p style="font-size:11px;color:var(--red);margin-top:8px;">⚠️ 付款时请备注您的账号，方便核对</p>
       </div>
-      <div class="form-group"><label>📸 支付截图（必传）</label><input type="file" id="orderScreenshot" accept="image/*" style="padding:8px;"></div>
+      <div class="form-group"><label>📸 支付截图（必传）</label><input type="file" id="orderScreenshot" accept="image/*" style="padding:8px;" onchange="document.getElementById('btnSubmitOrder').disabled=false;document.getElementById('btnSubmitOrder').style.opacity='1';document.getElementById('btnSubmitOrder').textContent='✅ 我已支付，确认提交';"></div>
       <div class="notice">支付后上传截图，客服核对后立即开始刷课。请不要在刷课期间登录账号。</div>
-      <button class="btn btn-gold" onclick="SO()">✅ 我已支付，确认提交</button>
+      <button class="btn btn-gold" id="btnSubmitOrder" onclick="SO()" disabled style="opacity:0.5;">🔒 请先上传支付截图</button>
     </div>
   </div>
 
@@ -221,6 +221,8 @@ function RO(){
   document.getElementById("checkStatus").classList.add("hidden");
   document.getElementById("btnCheck").classList.remove("hidden");
   document.getElementById("paySection").classList.add("hidden");
+  const btn=document.getElementById("btnSubmitOrder");if(btn){btn.disabled=true;btn.style.opacity='0.5';btn.textContent='🔒 请先上传支付截图';}
+  const sf=document.getElementById("orderScreenshot");if(sf)sf.value="";
   SI={};CC=[];
   const qr=GQ();const qi=document.getElementById("paymentQR");
   if(qr){qi.src=qr;qi.style.display="";}else{qi.style.display="none";}
@@ -275,6 +277,7 @@ function UT(){const c=window._pd;if(!c)return;const cnt=Object.keys(SI).length||
 function SO(){
   const c=window._pd;if(!c)return;
   if(Object.keys(SI).length===0){T("请至少勾选一门");return;}
+  if(!document.getElementById("orderScreenshot").files[0]){T("请上传支付截图");return;}
   const a=document.getElementById("orderAccount").value.trim();
   const p=document.getElementById("orderPassword").value.trim();
   const all=document.querySelectorAll("#courseChecklist .cn");
