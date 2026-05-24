@@ -14,12 +14,84 @@ def log(msg):
     except:pass
 
 _p=None; _b=None; _pg=None; _lock=threading.Lock(); _last=None
+CID_MAP={"U校园AI版":7012,"U校园":7001,"学习通":6721,"智慧树":15755,"中国大学MOOC":11202,"清华社英语":7024,"长江雨课堂":14311}
 
 PLATFORM_MAP={
     "U校园AI版":"PUP-U校园AI版","U校园":"PUP-U校园 整本","学习通":"恐龙学习通",
     "智慧树":"毛豆-智慧树/知到","中国大学MOOC":"恐龙中国大学MOOC",
     "清华社英语":"PUP-清华社英语","长江雨课堂":"恐龙-长江雨课堂",
 }
+
+def place_order(platform, account, password, courses_to_select):
+    """在kx平台下单：查课→勾选→下单"""
+    global _pg
+    log(f"ORDER {platform} {len(courses_to_select)}门课")
+
+    cid=CID_MAP.get(platform,7012)
+    # 导航到add2
+    if 'add2' not in _pg.url:
+        _pg.goto("https://kx.nopoliceman.help/add2",wait_until="domcontentloaded")
+        _pg.wait_for_timeout(2000)
+    dismiss()
+
+    # 我的收藏+选课
+    _pg.locator('#collect').first.click(force=True)
+    _pg.wait_for_timeout(3000)
+    for _ in range(5):
+        try:_pg.keyboard.press("Escape");_pg.wait_for_timeout(100)
+        except:pass
+
+    search_kw=PLATFORM_MAP.get(platform,platform[:4])
+    _pg.evaluate("()=>{const s=document.querySelector('select');if(s&&$(s).data('select2'))$(s).select2('open');}")
+    _pg.wait_for_timeout(2000)
+    si=_pg.locator('input.select2-search__field')
+    if si.count()>0:si.fill(search_kw)
+    _pg.wait_for_timeout(3000)
+    _pg.evaluate("()=>{const o=document.querySelector('.select2-results__option');if(o&&o.offsetParent){o.dispatchEvent(new MouseEvent('mousedown',{bubbles:true}));o.dispatchEvent(new MouseEvent('mouseup',{bubbles:true}));o.click();}}")
+    _pg.wait_for_timeout(2000)
+    _pg.evaluate("()=>{try{const s=document.querySelector('select');if(s&&$(s).data('select2'))$(s).select2('close');}catch(e){}}")
+    _pg.wait_for_timeout(500)
+
+    # 填表+查询
+    for _ in range(3):
+        try:_pg.keyboard.press("Escape");_pg.wait_for_timeout(100)
+        except:pass
+    ta=_pg.locator('textarea[placeholder*="下单格式"]')
+    if ta.count()>0:ta.fill(f" {account} {password}",force=True)
+    _pg.wait_for_timeout(500)
+    _pg.locator('a:has-text("查询课程")').first.click(force=True)
+    _pg.wait_for_timeout(8000)
+
+    # 尝试勾选匹配的课程
+    if courses_to_select and len(courses_to_select)>0:
+        result=_pg.evaluate(f"""(courses)=>{{
+            const checkboxes=document.querySelectorAll('input[type=checkbox]:visible');
+            let matched=0;
+            checkboxes.forEach(cb=>{{
+                const row=cb.closest('tr,div,.check-item')?.textContent||'';
+                for(const cn of courses){{
+                    if(row.includes(cn.substring(0,6))||cn.includes(row.substring(0,10))){{
+                        if(!cb.checked){{cb.click();matched++;}}
+                        break;
+                    }}
+                }}
+            }});
+            return matched;
+        }}""",courses_to_select)
+        log(f"勾选{result}门")
+        _pg.wait_for_timeout(1000)
+
+    # 点"确认下单"或"我选好了"
+    for btn_text in ['确认下单','我选好了','提交']:
+        btn=_pg.locator(f'button:has-text("{btn_text}"):visible, a:has-text("{btn_text}"):visible').first
+        if btn.count()>0:
+            btn.click(force=True)
+            log(f"点击:{btn_text}")
+            _pg.wait_for_timeout(5000)
+            break
+
+    log("下单完成")
+    return {'success':True,'msg':'下单请求已提交，请到kx平台确认订单状态'}
 
 def init_browser():
     global _p,_b,_pg
@@ -190,7 +262,27 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({'status':'ok'}).encode())
     def do_POST(self):
-        if self.path=='/api/check-course':
+        if self.path=='/api/place-order':
+            # 自动下单：查询→勾选课程→下单
+            try:
+                length=int(self.headers.get('Content-Length',0))
+                body=self.rfile.read(length)
+                try:data=json.loads(body)
+                except:data=json.loads(body.decode('gbk'))
+                account=data.get('account','');password=data.get('password','')
+                platform=data.get('platform','');courses=data.get('courses',[])
+                if not account or not password:
+                    result={'success':False,'msg':'缺少账号密码'}
+                else:
+                    with _lock:init_browser()
+                    result=place_order(platform,account,password,courses)
+            except Exception as e:log(f"ORDER_ERR:{e}");result={'success':False,'msg':str(e)[:100]}
+            resp=json.dumps(result,ensure_ascii=False).encode('utf-8')
+            self.send_response(200);self.send_header('Content-Type','application/json;charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin','*');self.send_header('Content-Length',str(len(resp)))
+            self.end_headers();self.wfile.write(resp)
+
+        elif self.path=='/api/check-course':
             try:
                 length=int(self.headers.get('Content-Length',0))
                 body=self.rfile.read(length)

@@ -311,13 +311,17 @@ function RA(){
       <div style="font-size:11px;">账号:${o.account}｜密码:${o.password}</div>
       <div style="font-size:11px;color:var(--green);">课程:${(o.courses||[]).join('、')}</div>
       <div class="meta">${o.createdAt}｜${o.count||1}门</div>
-      ${o.screenshot?`<img src="${o.screenshot}" style="max-width:80px;margin-top:3px;border-radius:6px;">`:""}
-      ${o.status==="pending"?`<button class="btn btn-sm btn-primary" onclick="MD('${o.id}')">标记完成</button>`:""}
+      ${o.screenshot?`<img src="${o.screenshot}" style="max-width:120px;margin-top:3px;border-radius:6px;">`:""}
+      ${o.status==="pending"?`<div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap;">
+        <button class="btn btn-sm btn-green" onclick="PO('${o.id}')">🤖自动下单</button>
+        <button class="btn btn-sm btn-primary" onclick="MD('${o.id}')">标记完成</button>
+      </div>`:""}
     </div>`).join("");}
   }
   if(AT==="prices"){const cs=GC();div.innerHTML=cs.map((c,i)=>`<div class="order-item"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:11px;"><b>${c.logo} ${c.name}</b></span><div class="inline-row"><span style="font-size:10px;color:var(--sub);">¥</span><input type="number" id="p_${i}" value="${c.price}" style="width:60px;padding:5px;border-radius:6px;border:1px solid #444;background:var(--card);color:var(--text);text-align:center;" step="0.1"><button class="btn btn-sm btn-green" onclick="UP(${i})">保存</button></div></div></div>`).join("")+'<p style="color:var(--sub);font-size:10px;margin-top:4px;">修改后自动同步到服务端，所有人可见</p>';}
   if(AT==="qrcode"){const qr=GQ();div.innerHTML=`<p style="font-size:12px;color:var(--sub);margin-bottom:6px;">上传收款码</p>${qr?`<img src="${qr}" style="max-width:160px;border-radius:10px;margin-bottom:6px;display:block;">`:"<p style='color:var(--sub);'>未设置</p>"}<input type="file" id="qrFile" accept="image/*" style="margin-bottom:6px;"><button class="btn btn-primary" onclick="UQ()">上传</button>`;}
 }
+async function PO(id){const orders=GO();const o=orders.find(x=>x.id===id);if(!o)return;T("正在自动下单...");try{const r=await fetch(`${AP}/api/place-order`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({account:o.account,password:o.password,platform:o.platform,courses:o.courses||[]})});const d=await r.json();T(d.msg||d.error||"下单完成");}catch(e){T("下单失败:"+e.message);}}
 function MD(id){const data=ld();const orders=data.orders||[];const o=orders.find(x=>x.id===id);if(o){o.status="done";data.orders=orders;sv(data);RA();T("已标记");}}
 async function UP(i){const v=parseFloat(document.getElementById("p_"+i).value);if(isNaN(v)||v<0){T("无效");return;}const cs=GC();cs[i].price=v;const priceData={};priceData[cs[i].kx]=v;try{await fetch(`${AP}/api/prices`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(priceData)});_serverPrices=cs[i].kx in (_serverPrices||{})?Object.assign(_serverPrices||{},priceData):priceData;T("价格已同步到服务端！");}catch(e){T("同步失败，请检查服务端");}}
 function UQ(){const f=document.getElementById("qrFile").files[0];if(!f){T("请选择");return;}const r=new FileReader();r.onload=function(e){const d=ld();d.paymentQR=e.target.result;sv(d);T("已更新");RA();};r.readAsDataURL(f);}
